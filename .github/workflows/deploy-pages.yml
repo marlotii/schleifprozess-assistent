@@ -29,6 +29,7 @@ jobs:
           test -s source-original.html
           test -s manifest.webmanifest
           test -s sw.js
+          test -s mobile.css
           test -s assets/icon-192.png
           test -s assets/icon-512.png
           test -s assets/apple-touch-icon.png
@@ -36,12 +37,24 @@ jobs:
           grep -qi '</html>' index.html
           grep -qi 'manifest.webmanifest' index.html
           grep -qi 'serviceWorker.register' index.html
-          sha256sum source-original.html index.html manifest.webmanifest sw.js > workflow-hashes.txt
+          sha256sum source-original.html index.html manifest.webmanifest sw.js mobile.css > workflow-hashes.txt
           rm -rf _site
           mkdir -p _site/assets
-          cp index.html manifest.webmanifest sw.js .nojekyll _site/
+          cp index.html manifest.webmanifest sw.js mobile.css .nojekyll _site/
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png _site/assets/
           cp workflow-hashes.txt _site/
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('_site/index.html')
+          html = p.read_text(encoding='utf-8')
+          marker = '<link rel="stylesheet" href="./mobile.css">'
+          if marker not in html:
+              if '</head>' not in html:
+                  raise SystemExit('Missing </head> in index.html')
+              html = html.replace('</head>', marker + '\n</head>', 1)
+          p.write_text(html, encoding='utf-8')
+          PY
+          grep -q 'mobile.css' _site/index.html
           test "$(stat -c%s _site/index.html)" -gt 800000
 
       - name: Configure GitHub Pages
