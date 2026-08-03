@@ -1,41 +1,341 @@
-/* Schleifprozess Assistent – funktionale iPhone-Ansicht v3. Desktop bleibt unverändert. */
-@media (max-width:760px){
-html{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{width:100%;max-width:100%;overflow-x:hidden;padding:0}
-body:has(.overlay.open),body:has(.detail-modal.open){overflow:hidden!important;touch-action:none}
-button,input,select,textarea{font-size:16px!important;-webkit-tap-highlight-color:transparent}
-button{min-height:44px;touch-action:manipulation}
-input,select,textarea{max-width:100%;touch-action:manipulation}
-select{-webkit-appearance:menulist!important;appearance:auto!important;background:#fff!important;position:relative;z-index:2;pointer-events:auto!important}
-.sheet,.section,.detail-card,.summary-item,.module{transform:none!important}
-.overlay,.detail-modal,.sheet,.section,.detail-card{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-.app{width:100%;max-width:100%;padding:max(8px,env(safe-area-inset-top)) 8px calc(12px + env(safe-area-inset-bottom))}
-.header{position:sticky;top:max(6px,env(safe-area-inset-top));display:grid!important;grid-template-columns:1fr!important;gap:12px!important;padding:14px!important;border-radius:22px!important}
-.brand{min-width:0;gap:11px}.drop{width:28px;height:34px;flex:0 0 auto}.brand h1{font-size:22px!important;line-height:1.08;white-space:nowrap}
-.top-actions{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(0,.8fr) minmax(0,1fr)!important;width:100%;gap:6px!important}
-.top-actions button{width:100%;min-width:0;min-height:42px;padding:7px 5px!important;border-radius:12px!important;font-size:12px!important;line-height:1.15;white-space:normal}
-.hero{margin-top:10px;padding:15px!important;border-radius:22px!important}.hero h2{font-size:24px!important}
-.setup-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-top:12px!important}
-.summary-item{min-height:74px!important;padding:11px 12px!important;border-radius:15px!important}.summary-item span{font-size:11.5px!important}.summary-item strong{font-size:15px!important;line-height:1.25;overflow-wrap:anywhere}
-.modules{grid-template-columns:1fr!important;gap:9px!important;margin-top:10px!important}
-.module{display:grid!important;grid-template-columns:48px minmax(0,1fr)!important;grid-template-rows:auto!important;align-items:center!important;justify-content:initial!important;gap:3px 12px!important;min-height:76px!important;padding:13px 15px!important;border-radius:20px!important}
-.module:hover{transform:none!important}.module-icon{grid-column:1;grid-row:1;width:48px!important;height:48px!important;border-radius:15px!important}.module h3{grid-column:2;grid-row:1;margin:0!important;font-size:18px!important;line-height:1.2}.module p,.module b{display:none}
-.overlay{padding:0!important;align-items:stretch!important;justify-content:stretch!important}
-.sheet,#moduleOverlay .sheet,#setupOverlay .sheet{width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;border-radius:0!important;border:0!important;overflow:hidden!important;display:grid!important;grid-template-rows:auto minmax(0,1fr)!important}
-.sheet-head{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:9px!important;padding:calc(11px + env(safe-area-inset-top)) 12px 10px!important;align-items:start!important}.sheet-head h2{font-size:24px!important;line-height:1.08}.sheet-head p{margin-top:3px!important;font-size:12px!important;line-height:1.3}
-.sheet-actions{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;width:100%;gap:7px!important}.sheet-actions button{width:100%;min-width:0!important;min-height:44px!important;padding:8px!important;border-radius:12px!important;font-size:14px!important;line-height:1.15;white-space:normal}.setup-save{min-width:0!important;font-size:14px!important}
-#setupOverlay .sheet-body{display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;min-height:0!important;overflow:hidden!important;padding:8px 12px calc(10px + env(safe-area-inset-bottom))!important}
-#setupTabs,.setup-tabs{position:static!important;display:flex!important;flex-wrap:nowrap!important;gap:7px!important;width:100%!important;min-width:0!important;margin:0 0 8px!important;padding:2px 0 8px!important;overflow-x:auto!important;overflow-y:hidden!important;background:transparent!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;scrollbar-width:none}
-#setupTabs::-webkit-scrollbar,.setup-tabs::-webkit-scrollbar{display:none}#setupTabs button,.setup-tabs button{flex:0 0 auto!important;min-width:154px!important;min-height:44px!important;padding:8px 11px!important;font-size:14px!important;white-space:nowrap!important}
-#setupBody{min-height:0!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;padding:0 0 calc(18px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scrollbar-gutter:auto!important}
-#moduleOverlay .sheet-body,#moduleBody,.module-oil{min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 12px calc(20px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scrollbar-gutter:auto!important}
-.setup-compact,.compact-grid,.compact-grid.two,.compact-grid.three,.compact-grid.four,.grid,.grid.two,.grid.four,.result-layout,.kpis,.metric-cards,.portal,.cards,.answer-grid,.force-figure,.formula-head,.formula-list,.formula-detail-grid,.formula-detail-grid.no-visual,.formula-application,.issue-workflow,.oil-compare292,.oil-scenes,.oil-action-grid292,.oil-direct-grid292,.oil-input-grid291,.oil-main-number,.oil-action-grid291,.oil-help-tabs291,.oil-help-two,.oil-help-formulas291,.oil-help-nozzle291,.machine-spec-grid293,.wheel-choice-grid294,.wheel-alt-grid294,.wheel-compare294{grid-template-columns:minmax(0,1fr)!important}
-.section{padding:14px!important;border-radius:19px!important;margin-bottom:10px!important}.section h3{font-size:19px!important}.field{min-width:0}.field input,.field select,.field textarea,#setupOverlay .field input,#setupOverlay .field select,#setupOverlay .field textarea{width:100%!important;max-width:100%!important;min-height:46px!important;padding:10px 11px!important;font-size:16px!important}
-.detail-modal{padding:0!important;align-items:stretch!important}.detail-card,#detailModal .detail-card,#detailModal .detail-card.oil-help-modal-card,.print-dialog .detail-card{width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;border-radius:0!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;touch-action:pan-y}
-.detail-head,#detailModal .detail-card.oil-help-modal-card .detail-head{position:sticky!important;top:0;z-index:10;padding:calc(12px + env(safe-area-inset-top)) 12px 11px!important;background:rgba(250,253,255,.98)!important;border-bottom:1px solid var(--line)}.detail-head h3{font-size:23px!important;line-height:1.12}.detail-head .notice{font-size:12px!important}.close-x{min-height:44px!important;padding:8px 10px!important;font-size:13px!important}
-#detailBody,#detailModal .detail-card.oil-help-modal-card #detailBody,.print-options{min-height:0;padding:12px 12px calc(18px + env(safe-area-inset-bottom))!important}
-.literature-figure,.compact-figure{position:static!important;width:100%!important;max-width:100%!important}.literature-figure img,.compact-figure img,#detailBody img{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.formula-category-grid,.issue-category-grid,.knowledge-grid{grid-template-columns:minmax(0,1fr)!important}.material-groups{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x;-webkit-overflow-scrolling:touch}.formula-category{min-height:88px!important}.symbol-table{width:100%;min-width:0;grid-template-columns:64px minmax(120px,1fr) 70px!important;overflow-x:auto}.symbol-table div{overflow-wrap:anywhere}.compare-row{grid-template-columns:86px minmax(0,1fr) 64px!important;gap:6px!important}.action-card{grid-template-columns:34px minmax(0,1fr)!important}.action-card .prio{grid-column:2;justify-self:start}
-.oil-toolbar-actions292,.oil-toolbar-actions292 .oil-mode-switch{width:100%}.oil-toolbar-actions292 .oil-mode-switch{display:grid!important;grid-template-columns:1fr!important}.oil-toolbar-actions292 button{width:100%;justify-content:center}.oil-scene-svg292{height:auto!important;min-height:190px;max-height:230px}.oil-scene-summary292{grid-template-columns:repeat(2,minmax(0,1fr))!important}.oil-soll-control292{display:grid!important}.oil-soll-control292 button{width:100%}
+/* Schleifprozess Assistent – coherent touch interface v5.
+   The desktop presentation is not changed. */
+@media (max-width:760px), (max-width:900px) and (pointer:coarse){
+  :root{
+    --m-bg:#eef4f7;
+    --m-surface:#ffffff;
+    --m-soft:#f5f8fa;
+    --m-line:#d5e0e7;
+    --m-text:#173047;
+    --m-muted:#61788a;
+    --m-accent:#0878b8;
+    --m-accent-dark:#075d8d;
+    --m-radius:16px;
+    --m-shadow:0 8px 26px rgba(22,55,78,.08);
+  }
+
+  html{
+    width:100%;max-width:100%;overflow-x:hidden;
+    -webkit-text-size-adjust:100%;text-size-adjust:100%;
+    background:var(--m-bg);
+  }
+  body{
+    width:100%;max-width:100%;overflow-x:hidden;padding:0;
+    background:var(--m-bg);
+  }
+  body.mobile-overlay-open{overflow:hidden!important;}
+
+  button,input,select,textarea{font-size:16px!important;-webkit-tap-highlight-color:transparent;}
+  button{min-height:44px;touch-action:manipulation;}
+  input,select,textarea{max-width:100%;touch-action:manipulation;}
+  select{-webkit-appearance:menulist!important;appearance:auto!important;background:#fff!important;}
+
+  .overlay,.detail-modal,.sheet,.section,.detail-card{
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  .sheet,.section,.detail-card,.summary-item,.module{transform:none!important;}
+
+  .app{
+    width:100%;max-width:100%;
+    padding:max(8px,env(safe-area-inset-top)) 8px calc(12px + env(safe-area-inset-bottom));
+  }
+  .header{
+    position:static!important;
+    display:grid!important;grid-template-columns:1fr!important;gap:10px!important;
+    padding:13px!important;border-radius:20px!important;
+  }
+  .brand{min-width:0;gap:10px!important;}
+  .drop{width:27px!important;height:33px!important;flex:0 0 auto;}
+  .brand h1{font-size:21px!important;line-height:1.12!important;white-space:normal!important;overflow-wrap:anywhere;}
+  .brand p{display:none!important;}
+  .top-actions{
+    display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr) minmax(0,1fr)!important;
+    width:100%;gap:6px!important;
+  }
+  .top-actions button{
+    width:100%;min-width:0;min-height:42px!important;padding:7px 5px!important;
+    border-radius:11px!important;font-size:12px!important;line-height:1.15!important;white-space:normal!important;
+  }
+
+  .hero{margin-top:9px!important;padding:14px!important;border-radius:20px!important;}
+  .hero-top{display:block!important;}
+  .hero h2{font-size:23px!important;line-height:1.15!important;}
+  .hero p{font-size:13px!important;line-height:1.4!important;}
+  .setup-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin-top:11px!important;}
+  .summary-item{min-height:72px!important;padding:10px 11px!important;border-radius:14px!important;overflow:hidden!important;}
+  .summary-item span{font-size:11px!important;}
+  .summary-item strong{font-size:14px!important;line-height:1.25!important;overflow-wrap:anywhere!important;word-break:normal!important;}
+
+  .modules{grid-template-columns:1fr!important;gap:8px!important;margin-top:9px!important;}
+  .module{
+    display:grid!important;grid-template-columns:46px minmax(0,1fr)!important;grid-template-rows:auto!important;
+    align-items:center!important;gap:0 11px!important;min-height:72px!important;
+    padding:12px 14px!important;border-radius:18px!important;overflow:hidden!important;
+  }
+  .module:hover{transform:none!important;}
+  .module::after{content:none!important;display:none!important;}
+  .module-icon{grid-column:1;grid-row:1;width:46px!important;height:46px!important;border-radius:14px!important;}
+  .module h3{grid-column:2;grid-row:1;margin:0!important;font-size:17px!important;line-height:1.2!important;overflow-wrap:anywhere;}
+  .module p,.module b{display:none!important;}
+
+  .overlay,.detail-modal{padding:0!important;align-items:stretch!important;justify-content:stretch!important;}
+  .sheet,#moduleOverlay .sheet,#setupOverlay .sheet{
+    width:100vw!important;height:var(--mobile-vh,100dvh)!important;max-width:none!important;max-height:none!important;
+    display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;
+    overflow:hidden!important;border:0!important;border-radius:0!important;
+    background:var(--m-bg)!important;box-shadow:none!important;
+  }
+  .sheet-head{
+    min-width:0!important;padding:calc(10px + env(safe-area-inset-top)) 12px 10px!important;
+    border-bottom:1px solid var(--m-line)!important;background:rgba(255,255,255,.98)!important;
+  }
+  .sheet-head>div:first-child{min-width:0!important;}
+  .sheet-head h2{margin:0!important;font-size:21px!important;line-height:1.15!important;overflow-wrap:anywhere!important;}
+  .sheet-head p{margin:3px 0 0!important;font-size:12px!important;line-height:1.35!important;color:var(--m-muted)!important;overflow-wrap:anywhere!important;}
+  .sheet-actions button{
+    min-width:0!important;min-height:42px!important;padding:8px 10px!important;border-radius:11px!important;
+    font-size:13px!important;line-height:1.2!important;white-space:normal!important;
+  }
+
+  #setupOverlay .sheet{padding-bottom:calc(70px + env(safe-area-inset-bottom))!important;}
+  #setupOverlay .sheet-head{display:block!important;}
+  #setupOverlay .sheet-actions{
+    position:fixed!important;z-index:130!important;left:0;right:0;bottom:0;
+    display:grid!important;grid-template-columns:1fr 1.2fr!important;gap:8px!important;
+    width:100%!important;padding:9px 12px calc(9px + env(safe-area-inset-bottom))!important;
+    border-top:1px solid var(--m-line)!important;background:rgba(255,255,255,.98)!important;
+    box-shadow:0 -8px 24px rgba(23,55,76,.08)!important;
+  }
+  #setupOverlay .sheet-actions button{width:100%!important;min-height:46px!important;font-size:14px!important;}
+  #setupOverlay .sheet-body{
+    display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;
+    min-height:0!important;overflow:hidden!important;padding:9px 10px 0!important;
+  }
+  #setupTabs,.setup-tabs{
+    position:static!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;width:100%!important;margin:0 0 9px!important;padding:0!important;
+    overflow:visible!important;background:transparent!important;
+  }
+  #setupTabs button,.setup-tabs button{
+    width:100%!important;min-width:0!important;min-height:42px!important;padding:7px 8px!important;
+    border-radius:12px!important;font-size:13px!important;line-height:1.2!important;white-space:normal!important;
+  }
+  #setupBody{
+    width:100%!important;height:100%!important;min-height:0!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+    padding:0 0 18px!important;-webkit-overflow-scrolling:touch!important;
+    overscroll-behavior-y:contain;touch-action:pan-y!important;
+  }
+
+  #moduleOverlay .sheet-head{
+    display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;align-items:center!important;gap:10px!important;
+  }
+  #moduleOverlay .sheet-head>div:first-child{grid-column:2;grid-row:1;}
+  #moduleOverlay .sheet-actions{grid-column:1;grid-row:1;display:block!important;width:auto!important;}
+  #moduleBack{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:82px!important;}
+  #moduleClose{display:none!important;}
+  #moduleOverlay .sheet-body,#moduleBody,.module-oil{
+    width:100%!important;height:100%!important;min-height:0!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+    padding:10px 10px calc(20px + env(safe-area-inset-bottom))!important;
+    -webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain;touch-action:pan-y!important;
+  }
+
+  #setupOverlay *,#moduleOverlay *,#detailModal *,#printDialog *{min-width:0;}
+  #setupOverlay h2,#setupOverlay h3,#setupOverlay h4,#setupOverlay p,#setupOverlay span,#setupOverlay strong,#setupOverlay small,#setupOverlay label,
+  #moduleOverlay h2,#moduleOverlay h3,#moduleOverlay h4,#moduleOverlay p,#moduleOverlay span,#moduleOverlay strong,#moduleOverlay small,#moduleOverlay label,#moduleOverlay li,
+  #detailModal h2,#detailModal h3,#detailModal h4,#detailModal p,#detailModal span,#detailModal strong,#detailModal small,#detailModal label,#detailModal li{
+    max-width:100%;overflow-wrap:anywhere;word-break:normal;
+  }
+  #setupOverlay button,#moduleOverlay button,#detailModal button,#printDialog button{max-width:100%;white-space:normal!important;}
+
+  .setup-compact,.compact-grid,.compact-grid.two,.compact-grid.three,.compact-grid.four,
+  .grid,.grid.two,.grid.four,.result-layout,.kpis,.metric-cards,.portal,.cards,.answer-grid,.force-figure,
+  .formula-head,.formula-list,.formula-detail-grid,.formula-detail-grid.no-visual,.formula-application,.issue-workflow,
+  .oil-compare292,.oil-scenes,.oil-action-grid292,.oil-direct-grid292,.oil-input-grid291,.oil-main-number,
+  .oil-action-grid291,.oil-help-tabs291,.oil-help-two,.oil-help-formulas291,.oil-help-nozzle291,
+  .machine-spec-grid293,.wheel-choice-grid294,.wheel-alt-grid294,.wheel-compare294{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .section{
+    padding:13px!important;margin-bottom:9px!important;border-radius:var(--m-radius)!important;
+    border:1px solid var(--m-line)!important;background:var(--m-surface)!important;box-shadow:var(--m-shadow)!important;
+    overflow:visible!important;
+  }
+  .section h3{font-size:18px!important;line-height:1.2!important;margin-bottom:10px!important;}
+  .section h4{font-size:16px!important;line-height:1.25!important;}
+  .field{min-width:0!important;}
+  .field label{font-size:13px!important;line-height:1.25!important;margin-bottom:5px!important;}
+  .field input,.field select,.field textarea,#setupOverlay .field input,#setupOverlay .field select,#setupOverlay .field textarea{
+    width:100%!important;max-width:100%!important;min-height:46px!important;padding:10px 11px!important;
+    border-radius:12px!important;font-size:16px!important;line-height:1.25!important;
+  }
+  .field textarea{min-height:100px!important;}
+  .field small,.notice{font-size:11.5px!important;line-height:1.4!important;}
+  #setupOverlay select,#moduleOverlay select,#detailModal select{position:relative;z-index:2;pointer-events:auto!important;}
+
+  .advanced-details{border:1px solid var(--m-line)!important;border-radius:12px!important;overflow:hidden!important;background:var(--m-soft)!important;}
+  .advanced-details summary{
+    min-height:44px!important;display:flex!important;align-items:center!important;padding:10px 12px!important;
+    font-size:13px!important;font-weight:800!important;cursor:pointer!important;
+  }
+  .advanced-content{padding:11px!important;}
+  .wheel-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;}
+  .wheel-actions button{width:100%!important;padding:8px!important;font-size:13px!important;}
+  .material-groups{
+    display:flex!important;flex-wrap:wrap!important;gap:6px!important;width:100%!important;
+    overflow:visible!important;touch-action:auto!important;
+  }
+  .material-groups button{flex:0 1 auto!important;min-height:38px!important;padding:7px 10px!important;font-size:12px!important;}
+  .filter-bar{display:flex!important;flex-wrap:wrap!important;gap:6px!important;}
+  .filter-pill{max-width:100%!important;overflow-wrap:anywhere!important;}
+
+  .section-title-row293,.machine-source293{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;}
+  .quality-badge293,.status-pill,.prio{
+    width:max-content!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  .machine-spec-grid293{gap:8px!important;}
+  .machine-spec293{padding:10px!important;border-radius:13px!important;overflow:hidden!important;}
+  .machine-spec293 label{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:start!important;gap:6px!important;}
+  .machine-spec293 label span{white-space:nowrap!important;font-size:9px!important;}
+  .machine-source293 a{width:100%!important;text-align:center!important;}
+  .wheel-top293{grid-template-columns:minmax(0,1fr)!important;overflow:hidden!important;}
+  .wheel-top-score293{display:flex!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;}
+  .wheel-top-main293{padding:12px!important;}
+  .wheel-top-symbol293{display:none!important;}
+  .wheel-spec-strip,.recommend-window{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;}
+
+  .segments{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important;}
+  .segments button{width:100%!important;min-height:42px!important;padding:8px 10px!important;font-size:13px!important;}
+
+  .oil-toolbar292,.oil-toolbar-actions292,.oil-toolbar-actions292 .oil-mode-switch{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;gap:7px!important;
+  }
+  .oil-toolbar-actions292 button{width:100%!important;justify-content:center!important;}
+  .oil-scene-head292,.oil-situation-head{
+    display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:start!important;gap:8px!important;
+  }
+  .oil-state-pill292,.oil-state-pill292.info,.oil-state-pill{
+    position:static!important;width:auto!important;height:auto!important;min-width:max-content!important;max-width:108px!important;
+    padding:5px 8px!important;border:0!important;border-radius:999px!important;
+    font-size:10px!important;line-height:1.2!important;white-space:normal!important;text-align:center!important;
+  }
+  .oil-state-pill292.info:after{display:none!important;}
+  .oil-scene-svg292{width:100%!important;height:auto!important;min-height:180px!important;max-height:235px!important;overflow:visible!important;}
+  .oil-scene-svg292 text{font-size:10px!important;}
+  .oil-scene-summary292{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;}
+  .oil-tolerance292,.oil-tolerance-scale292,.oil-tolerance-track292,.oil-dynamic292{width:100%!important;max-width:100%!important;overflow:hidden!important;}
+  .oil-tolerance-head292{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:8px!important;}
+  .oil-tolerance-scale292{font-size:9px!important;}
+  .oil-soll-control292{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important;}
+  .oil-soll-control292 button{width:100%!important;}
+  .oil-action-card292{min-height:0!important;}
+
+  .kpis{gap:7px!important;}
+  .kpi{padding:11px!important;border-radius:14px!important;}
+  .kpi strong{font-size:22px!important;}
+  .metric-cards{gap:7px!important;}
+  .metric{padding:11px!important;border-radius:14px!important;}
+  .metric .value{font-size:22px!important;}
+  .action-card{grid-template-columns:34px minmax(0,1fr)!important;gap:9px!important;padding:11px!important;}
+  .action-card .prio{grid-column:2;justify-self:start;}
+  .portal{gap:7px!important;}
+  .portal-card{
+    min-height:0!important;display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;
+    gap:0 10px!important;align-items:center!important;padding:11px!important;border-radius:14px!important;
+  }
+  .portal-card .ico{grid-column:1;grid-row:1/3;margin:0!important;}
+  .portal-card h4{grid-column:2;margin:0 0 3px!important;font-size:16px!important;}
+  .portal-card p{grid-column:2;margin:0!important;font-size:12px!important;}
+
+  .formula-category-grid,.issue-category-grid,.knowledge-grid{grid-template-columns:minmax(0,1fr)!important;gap:8px!important;}
+  .formula-category::before,.formula-category::after{content:none!important;display:none!important;}
+  .formula-category{
+    min-height:0!important;display:grid!important;grid-template-columns:52px minmax(0,1fr)!important;
+    grid-template-rows:auto!important;align-items:center!important;gap:10px!important;
+    padding:11px 12px!important;border-radius:15px!important;overflow:hidden!important;
+  }
+  .formula-category>.category-code{
+    grid-column:1!important;grid-row:1!important;align-self:center!important;justify-self:center!important;
+    width:42px!important;height:42px!important;margin:0!important;
+  }
+  .formula-category>.formula-meta{
+    grid-column:2!important;grid-row:1!important;align-self:center!important;
+    width:auto!important;max-width:100%!important;padding:0!important;
+  }
+  .formula-category>.formula-meta b,.formula-category>.formula-meta span{display:block!important;width:auto!important;max-width:100%!important;}
+  .formula-category b{font-size:16px!important;}
+  .formula-category span{font-size:12px!important;}
+  .issue-category{min-height:0!important;padding:13px!important;border-radius:15px!important;}
+  .issue-category h4{font-size:17px!important;margin:6px 0 4px!important;}
+  .issue-category p{font-size:12px!important;margin:0!important;}
+  .knowledge-card{padding:12px!important;border-radius:14px!important;}
+
+  .compare-row{grid-template-columns:72px minmax(0,1fr) 62px!important;gap:6px!important;font-size:12px!important;}
+  .symbol-table{width:100%!important;grid-template-columns:62px minmax(112px,1fr) 68px!important;overflow:hidden!important;}
+  .symbol-table div{padding:7px!important;font-size:11px!important;overflow-wrap:anywhere!important;}
+  .equation-book{font-size:21px!important;padding:13px!important;overflow-x:auto!important;}
+
+  button.info{
+    width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;
+    display:inline-grid!important;place-items:center!important;font-size:12px!important;
+  }
+  button.info.tip-open:after,button.info:focus:after{
+    content:attr(data-tip)!important;display:block!important;position:fixed!important;z-index:600!important;
+    left:12px!important;right:12px!important;top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom))!important;
+    width:auto!important;max-width:none!important;padding:12px!important;border-radius:12px!important;
+    background:#173047!important;color:#fff!important;font-size:13px!important;font-weight:500!important;line-height:1.4!important;
+    box-shadow:0 12px 36px rgba(0,0,0,.28)!important;
+  }
+
+  .detail-card,#detailModal .detail-card,#detailModal .detail-card.oil-help-modal-card,.print-dialog .detail-card{
+    width:100vw!important;height:var(--mobile-vh,100dvh)!important;max-width:none!important;max-height:none!important;
+    display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;
+    padding:0!important;border:0!important;border-radius:0!important;overflow:hidden!important;
+    background:var(--m-bg)!important;box-shadow:none!important;
+  }
+  .detail-head,#detailModal .detail-card.oil-help-modal-card .detail-head{
+    position:static!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:start!important;gap:10px!important;
+    padding:calc(10px + env(safe-area-inset-top)) 12px 10px!important;
+    background:#fff!important;border-bottom:1px solid var(--m-line)!important;
+  }
+  .detail-head>div{min-width:0!important;}
+  .detail-head h3{font-size:20px!important;line-height:1.2!important;}
+  .detail-head .notice{font-size:11.5px!important;line-height:1.35!important;}
+  .close-x{min-width:82px!important;min-height:42px!important;padding:8px 10px!important;font-size:13px!important;}
+  #detailBody,#detailModal .detail-card.oil-help-modal-card #detailBody{
+    width:100%!important;height:100%!important;min-height:0!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+    padding:10px 10px calc(20px + env(safe-area-inset-bottom))!important;
+    -webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;
+  }
+  .print-options{
+    width:100%!important;height:auto!important;min-height:0!important;
+    overflow-y:auto!important;overflow-x:hidden!important;align-content:start!important;grid-auto-rows:auto!important;
+    padding:10px 10px calc(20px + env(safe-area-inset-bottom))!important;
+    -webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;
+  }
+  .print-options button{min-height:54px!important;padding:12px 13px!important;}
+  .formula-detail-grid,.issue-workflow{grid-template-columns:minmax(0,1fr)!important;}
+  .issue-detail-hero{padding:14px!important;border-radius:14px!important;}
+  .workflow-step{grid-template-columns:38px minmax(0,1fr)!important;padding:12px!important;border-radius:14px!important;}
+  .literature-figure,.compact-figure{position:static!important;width:100%!important;max-width:100%!important;margin:10px 0!important;}
+  .literature-figure img,.compact-figure img,#detailBody img{
+    display:block!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;
+  }
+  .literature-figure figcaption{font-size:11px!important;line-height:1.4!important;overflow-wrap:anywhere!important;}
+  pre,code{white-space:pre-wrap!important;overflow-wrap:anywhere!important;}
 }
-@media (max-width:380px){.brand h1{font-size:20px!important}.top-actions{grid-template-columns:1fr 1fr!important}.top-actions #setupBtn{grid-column:1/-1}.setup-summary{grid-template-columns:1fr!important}.sheet-head h2{font-size:22px!important}}
+
+@media (max-width:360px){
+  .brand h1{font-size:19px!important;}
+  .top-actions{grid-template-columns:1fr 1fr!important;}
+  .top-actions #setupBtn{grid-column:1/-1;}
+  .setup-summary{grid-template-columns:1fr!important;}
+  #setupTabs,.setup-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  #setupOverlay .sheet-actions{grid-template-columns:1fr 1fr!important;}
+  .wheel-actions{grid-template-columns:1fr!important;}
+  .oil-scene-head292,.oil-situation-head,.oil-tolerance-head292{grid-template-columns:1fr!important;}
+  .oil-state-pill292,.oil-state-pill292.info,.oil-state-pill{justify-self:start!important;}
+}
