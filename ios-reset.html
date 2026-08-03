@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>iPhone-Cache bereinigen</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#edf3f7;color:#10283b}
+    main{width:min(520px,100%);background:#fff;border:1px solid #d7e1e9;border-radius:22px;padding:24px;box-shadow:0 18px 50px rgba(20,55,80,.12)}
+    h1{margin:0 0 12px;font-size:24px}
+    p{margin:0;line-height:1.5;color:#5d7386}
+    .status{margin-top:16px;padding:12px 14px;border-radius:14px;background:#eaf4fc;color:#10283b;font-weight:700}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>iPhone-Version wird aktualisiert</h1>
+    <p>Alte App-Caches und frühere Service-Worker-Registrierungen werden entfernt. Gespeicherte Setup-Daten bleiben erhalten.</p>
+    <div class="status" id="status">Bereinigung läuft …</div>
+  </main>
+  <script>
+    (async function(){
+      const status=document.getElementById('status');
+      try{
+        if('serviceWorker' in navigator){
+          const registrations=await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(registration=>registration.unregister()));
+        }
+        if('caches' in window){
+          const keys=await caches.keys();
+          await Promise.all(keys.filter(key=>key.includes('schleifprozess-assistent')).map(key=>caches.delete(key)));
+        }
+        status.textContent='Bereinigung abgeschlossen. Die Anwendung wird neu geladen …';
+        window.setTimeout(()=>location.replace('./?ios-reset='+Date.now()),500);
+      }catch(error){
+        status.textContent='Automatische Bereinigung fehlgeschlagen. Bitte Safari-Websitedaten für marlotii.github.io löschen.';
+        console.error(error);
+      }
+    })();
+  </script>
+</body>
+</html>
