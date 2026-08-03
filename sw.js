@@ -1,4 +1,4 @@
-const CACHE_NAME = "schleifprozess-assistent-v4";
+const CACHE_NAME = "schleifprozess-assistent-v5";
 const APP_BASE = new URL("./", self.location.href);
 const INDEX_URL = new URL("./index.html", APP_BASE).href;
 const PRECACHE_URLS = [
