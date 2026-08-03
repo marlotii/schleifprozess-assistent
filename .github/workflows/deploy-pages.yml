@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Validate Schleifprozess Assistent 3.0
+      - name: Validate Schleifprozess Assistent 2.95 bereinigt
         shell: bash
         run: |
           set -euo pipefail
@@ -35,15 +35,15 @@ jobs:
 
           grep -qi '<!doctype html' index.html
           grep -qi '</html>' index.html
-          grep -q '<title>Schleifprozess Assistent 3.0</title>' index.html
-          grep -q 'manifest.webmanifest' index.html
-          grep -q 'serviceWorker.register' index.html
+          grep -q '<title>Schleifprozess Assistent</title>' index.html
+          grep -q 'id="v295-functional-fix-js"' index.html
+          grep -q 'function parseNumber295' index.html
           ! grep -q 'mobile.css' index.html
           ! grep -q 'mobile-setup.js' index.html
 
-          test "$(stat -c%s index.html)" -eq 536911
-          test "$(sha256sum index.html | cut -d' ' -f1)" = "08445ee17e50925a25b3e7f41a67692d67dfff060478d775144d6e297bc2637d"
-          test "$(git hash-object index.html)" = "98172e2ec2a1df81a805f54fb2131bab5c584e63"
+          test "$(stat -c%s index.html)" -eq 918985
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "2aa683ef8de047fc6f56ba4cfd49bb9904d3622ec7064520a4bfb70070af53a9"
+          test "$(git hash-object index.html)" = "d9d4bdc47f65e5c89b1beac1656225d97bd09011"
 
           sha256sum index.html manifest.webmanifest sw.js assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png > workflow-hashes.txt
 
