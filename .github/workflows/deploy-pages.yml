@@ -30,6 +30,7 @@ jobs:
           test -s manifest.webmanifest
           test -s sw.js
           test -s mobile.css
+          test -s mobile-setup.js
           test -s assets/icon-192.png
           test -s assets/icon-512.png
           test -s assets/apple-touch-icon.png
@@ -37,21 +38,26 @@ jobs:
           grep -qi '</html>' index.html
           grep -qi 'manifest.webmanifest' index.html
           grep -qi 'serviceWorker.register' index.html
-          sha256sum source-original.html index.html manifest.webmanifest sw.js mobile.css > workflow-hashes.txt
+          sha256sum source-original.html index.html manifest.webmanifest sw.js mobile.css mobile-setup.js > workflow-hashes.txt
           rm -rf _site
           mkdir -p _site/assets
-          cp index.html manifest.webmanifest sw.js mobile.css .nojekyll _site/
+          cp index.html manifest.webmanifest sw.js mobile.css mobile-setup.js .nojekyll _site/
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png _site/assets/
           cp workflow-hashes.txt _site/
           python3 - <<'PY'
           from pathlib import Path
           p = Path('_site/index.html')
           html = p.read_text(encoding='utf-8')
-          marker = '<link rel="stylesheet" href="./mobile.css">'
-          if marker not in html:
+          css_marker = '<link rel="stylesheet" href="./mobile.css">'
+          if css_marker not in html:
               if '</head>' not in html:
                   raise SystemExit('Missing </head> in index.html')
-              html = html.replace('</head>', marker + '\n</head>', 1)
+              html = html.replace('</head>', css_marker + '\n</head>', 1)
+          js_marker = '<script src="./mobile-setup.js" defer></script>'
+          if js_marker not in html:
+              if '</body>' not in html:
+                  raise SystemExit('Missing </body> in index.html')
+              html = html.replace('</body>', js_marker + '\n</body>', 1)
           image_key_fixes = {
               "'heat_damage'": "'heat_clean'",
               "'grain_compare'": "'wheel_clean'",
@@ -63,6 +69,7 @@ jobs:
           p.write_text(html, encoding='utf-8')
           PY
           grep -q 'mobile.css' _site/index.html
+          grep -q 'mobile-setup.js' _site/index.html
           ! grep -q "'heat_damage'" _site/index.html
           ! grep -q "'grain_compare'" _site/index.html
           ! grep -q "'wheel_composition'" _site/index.html
