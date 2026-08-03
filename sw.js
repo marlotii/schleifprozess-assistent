@@ -1,10 +1,60 @@
-SCHLEIFPROZESS ASSISTENT - WINDOWS-OFFLINE-VERSION
+const CACHE_NAME = "schleifprozess-assistent-v1";
+const APP_BASE = new URL("./", self.location.href);
+const INDEX_URL = new URL("./index.html", APP_BASE).href;
+const PRECACHE_URLS = [
+  new URL("./", APP_BASE).href,
+  INDEX_URL,
+  new URL("./manifest.webmanifest", APP_BASE).href,
+  new URL("./assets/icon-192.png", APP_BASE).href,
+  new URL("./assets/icon-512.png", APP_BASE).href,
+  new URL("./assets/apple-touch-icon.png", APP_BASE).href
+];
 
-1. ZIP-Datei vollständig entpacken.
-2. Den entpackten Ordner öffnen.
-3. index.html mit Microsoft Edge, Google Chrome oder Firefox öffnen.
-4. Keine Datei direkt aus der ZIP-Datei starten.
-5. Alle Dateien und den Ordner assets zusammen belassen.
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(() => self.skipWaiting())
+  );
+});
 
-Die Anwendung selbst benötigt keine Internetverbindung. Externe Hersteller- und Quellenlinks funktionieren nur online.
-Die lokale index.html basiert auf der unveränderten Originalanwendung. Der Service Worker ist für die gehostete PWA vorgesehen und wird bei file:// nicht benötigt.
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", event => {
+  const request = event.request;
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(INDEX_URL, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(INDEX_URL))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then(cached => cached || fetch(request).then(response => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+      }
+      return response;
+    }))
+  );
+});

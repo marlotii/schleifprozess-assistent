@@ -1,13 +1,10 @@
-# GitHub Pages einrichten
+SCHLEIFPROZESS ASSISTENT - WINDOWS-OFFLINE-VERSION
 
-1. Repository öffnen.
-2. `Settings` öffnen.
-3. Links `Pages` wählen.
-4. Unter `Build and deployment` bei `Source` die Option `GitHub Actions` wählen.
-5. Den Workflow `Deploy Schleifprozess Assistent` unter `Actions` prüfen oder manuell starten.
+1. ZIP-Datei vollständig entpacken.
+2. Den entpackten Ordner öffnen.
+3. index.html mit Microsoft Edge, Google Chrome oder Firefox öffnen.
+4. Keine Datei direkt aus der ZIP-Datei starten.
+5. Alle Dateien und den Ordner assets zusammen belassen.
 
-## Sichtbarkeit
-
-GitHub Pages steht mit GitHub Free für öffentliche Repositories zur Verfügung. Private GitHub-Pages-Sites setzen einen unterstützten GitHub-Pro-, Team- oder Enterprise-Tarif voraus.
-
-Das Repository darf nur nach bewusster Prüfung der enthaltenen technischen Daten öffentlich gemacht werden.
+Die Anwendung selbst benötigt keine Internetverbindung. Externe Hersteller- und Quellenlinks funktionieren nur online.
+Die lokale index.html basiert auf der unveränderten Originalanwendung. Der Service Worker ist für die gehostete PWA vorgesehen und wird bei file:// nicht benötigt.

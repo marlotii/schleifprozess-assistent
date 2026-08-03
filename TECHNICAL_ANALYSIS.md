@@ -1,9 +1,44 @@
-38c81ac4f4ebe2e541630aa30f777bafdd2173fa9c58fae4a0dd1623807d60a5  uploaded-original
-38c81ac4f4ebe2e541630aa30f777bafdd2173fa9c58fae4a0dd1623807d60a5  source-original.html
-bc0ba700c66f8fb5ef0007aa48287e2683a1d98f756b534a552718361500eff2  index.html-pwa
-38c81ac4f4ebe2e541630aa30f777bafdd2173fa9c58fae4a0dd1623807d60a5  offline/index.html
-d9956bcb514321477310f40b38fe3ca5b4ab285be47876c8eb07172545ea311f  manifest.webmanifest
-a8afe653238fab0a7a309aca016760d55283178199313db6a34da33c296e7a1d  sw.js
-cbf8a3024ba3b81ad09fa3357c1dad120d27e25919da19d2fbec765b5b98d27a  assets/icon-192.png
-e18697577edc99301d49315063fa69029cec836c850d01cb78c44367934f1fce  assets/icon-512.png
-7c4c17dbfbe17349b31a343cd8b533758fcc3f4841cf0a50633ede8a7b9d7f40  assets/apple-touch-icon.png
+# Technische Analyse der Originaldatei
+
+## Basis
+
+- Anwendungstitel: `Schleifprozess Assistent`
+- Sprache: Deutsch (`lang="de"`)
+- Originalgrösse: 881241 Byte
+- Dokument: vollständiges HTML5-Dokument mit `<!doctype html>`, `</body>` und `</html>`
+- Viewport: bereits vorhanden (`width=device-width,initial-scale=1`)
+- JavaScript: drei vollständig eingebettete Skriptblöcke; Syntax mit `node --check` validiert
+- CSS: vollständig im HTML eingebettet
+
+## Abhängigkeiten und Offlinefähigkeit
+
+- Keine extern geladenen JavaScript-Dateien
+- Keine extern geladenen Stylesheets oder Schriftarten
+- Keine `fetch`-, XMLHttpRequest-, WebSocket- oder API-Aufrufe
+- 65 HTTPS-Adressen sind fachliche Quellen- bzw. Herstellerlinks, keine Laufzeitabhängigkeiten
+- Sieben Bilder sind als Base64-Daten eingebettet: ein PNG und sechs WebP-Dateien
+- Browser-Speicher: `localStorage` wird verwendet
+- Keine IndexedDB-Nutzung
+- Keine `file://`- oder absoluten Windows-Pfade
+- Druckfunktion ist vorhanden
+- Die fachliche Kernanwendung funktioniert deshalb ohne Netzwerkzugriff direkt als lokale HTML-Datei
+- Externe Quellenlinks können naturgemäss nur mit Internetverbindung geöffnet werden
+
+## Vertraulichkeitsprüfung
+
+- Keine E-Mail-Adressen erkannt
+- Keine externen eingebetteten PDFs erkannt
+- Keine Blaser- oder Swisslube-Bezeichnungen erkannt
+- Die Datei enthält umfangreiche technische Werkstoff-, Maschinen-, Schleifscheiben- und Prozessdaten sowie Hersteller- und Quellenangaben
+- Bei einem öffentlichen Repository wären diese Daten und alle eingebetteten Bilder weltweit abrufbar
+
+## PWA-Erweiterung
+
+Die technische `index.html` unterscheidet sich ausschliesslich durch:
+
+1. Manifest-Verknüpfung
+2. Apple-Touch-Icon-Verknüpfung
+3. Theme-Color-Meta-Tag
+4. Registrierung des Service Workers unmittelbar vor `</body>`
+
+Keine Berechnung, kein Datensatz, kein Filter, keine Navigation, kein Text und kein sichtbares Layout wurden geändert.
