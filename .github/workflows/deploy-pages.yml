@@ -21,60 +21,42 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Validate source and build Pages folder
+      - name: Validate Schleifprozess Assistent 3.0
         shell: bash
         run: |
           set -euo pipefail
           test -s index.html
-          test -s source-original.html
           test -s manifest.webmanifest
           test -s sw.js
-          test -s mobile.css
-          test -s mobile-setup.js
+          test -s .nojekyll
           test -s assets/icon-192.png
           test -s assets/icon-512.png
           test -s assets/apple-touch-icon.png
+
           grep -qi '<!doctype html' index.html
           grep -qi '</html>' index.html
-          grep -qi 'manifest.webmanifest' index.html
-          grep -qi 'serviceWorker.register' index.html
-          sha256sum source-original.html index.html manifest.webmanifest sw.js mobile.css mobile-setup.js > workflow-hashes.txt
+          grep -q '<title>Schleifprozess Assistent 3.0</title>' index.html
+          grep -q 'manifest.webmanifest' index.html
+          grep -q 'serviceWorker.register' index.html
+          ! grep -q 'mobile.css' index.html
+          ! grep -q 'mobile-setup.js' index.html
+
+          test "$(stat -c%s index.html)" -eq 536911
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "08445ee17e50925a25b3e7f41a67692d67dfff060478d775144d6e297bc2637d"
+          test "$(git hash-object index.html)" = "98172e2ec2a1df81a805f54fb2131bab5c584e63"
+
+          sha256sum index.html manifest.webmanifest sw.js assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png > workflow-hashes.txt
+
+      - name: Build GitHub Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
           rm -rf _site
           mkdir -p _site/assets
-          cp index.html manifest.webmanifest sw.js mobile.css mobile-setup.js .nojekyll _site/
+          cp index.html manifest.webmanifest sw.js .nojekyll workflow-hashes.txt _site/
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png _site/assets/
-          cp workflow-hashes.txt _site/
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('_site/index.html')
-          html = p.read_text(encoding='utf-8')
-          css_marker = '<link rel="stylesheet" href="./mobile.css">'
-          if css_marker not in html:
-              if '</head>' not in html:
-                  raise SystemExit('Missing </head> in index.html')
-              html = html.replace('</head>', css_marker + '\n</head>', 1)
-          js_marker = '<script src="./mobile-setup.js" defer></script>'
-          if js_marker not in html:
-              if '</body>' not in html:
-                  raise SystemExit('Missing </body> in index.html')
-              html = html.replace('</body>', js_marker + '\n</body>', 1)
-          image_key_fixes = {
-              "'heat_damage'": "'heat_clean'",
-              "'grain_compare'": "'wheel_clean'",
-              "'wheel_composition'": "'wheel_clean'",
-              "'qs_visual'": "'qs_clean'",
-          }
-          for old, new in image_key_fixes.items():
-              html = html.replace(old, new)
-          p.write_text(html, encoding='utf-8')
-          PY
-          grep -q 'mobile.css' _site/index.html
-          grep -q 'mobile-setup.js' _site/index.html
-          ! grep -q "'heat_damage'" _site/index.html
-          ! grep -q "'grain_compare'" _site/index.html
-          ! grep -q "'wheel_composition'" _site/index.html
-          ! grep -q "'qs_visual'" _site/index.html
-          test "$(stat -c%s _site/index.html)" -gt 800000
+          if [[ -f Schleifprozess_Assistent_3_0_VALIDATION.md ]]; then cp Schleifprozess_Assistent_3_0_VALIDATION.md _site/; fi
+          if [[ -f Schleifprozess_Assistent_3_0_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_3_0_TESTLOG.txt _site/; fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
