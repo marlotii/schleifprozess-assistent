@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version, beispielsweise v3.0.0"
+        description: "Version, beispielsweise v2.95.1"
         required: true
-        default: "v3.0.0"
+        default: "v2.95.1"
 
 permissions:
   contents: write
@@ -39,12 +39,14 @@ jobs:
         run: |
           set -euo pipefail
           test -s index.html
-          grep -q '<title>Schleifprozess Assistent 3.0</title>' index.html
+          grep -q '<title>Schleifprozess Assistent</title>' index.html
+          grep -q 'id="v295-functional-fix-js"' index.html
+          grep -q 'function parseNumber295' index.html
           ! grep -q 'mobile.css' index.html
           ! grep -q 'mobile-setup.js' index.html
-          test "$(stat -c%s index.html)" -eq 536911
-          test "$(sha256sum index.html | cut -d' ' -f1)" = "08445ee17e50925a25b3e7f41a67692d67dfff060478d775144d6e297bc2637d"
-          test "$(git hash-object index.html)" = "98172e2ec2a1df81a805f54fb2131bab5c584e63"
+          test "$(stat -c%s index.html)" -eq 918985
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "2aa683ef8de047fc6f56ba4cfd49bb9904d3622ec7064520a4bfb70070af53a9"
+          test "$(git hash-object index.html)" = "d9d4bdc47f65e5c89b1beac1656225d97bd09011"
 
       - name: Build offline package
         shell: bash
@@ -56,8 +58,8 @@ jobs:
           mkdir -p "$PACKAGE/assets"
           cp index.html manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE/"
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png "$PACKAGE/assets/"
-          if [[ -f Schleifprozess_Assistent_3_0_VALIDATION.md ]]; then cp Schleifprozess_Assistent_3_0_VALIDATION.md "$PACKAGE/"; fi
-          if [[ -f Schleifprozess_Assistent_3_0_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_3_0_TESTLOG.txt "$PACKAGE/"; fi
+          if [[ -f Schleifprozess_Assistent_2_95_BEREINIGT_PRUEFBERICHT.md ]]; then cp Schleifprozess_Assistent_2_95_BEREINIGT_PRUEFBERICHT.md "$PACKAGE/"; fi
+          if [[ -f Schleifprozess_Assistent_2_95_BEREINIGT_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_2_95_BEREINIGT_TESTLOG.txt "$PACKAGE/"; fi
           sha256sum "$PACKAGE/index.html" "$PACKAGE/manifest.webmanifest" "$PACKAGE/sw.js" "$PACKAGE/assets/"*.png > "$PACKAGE/SHA256SUMS.txt"
           grep -qi '<!doctype html' "$PACKAGE/index.html"
           grep -qi '</html>' "$PACKAGE/index.html"
@@ -76,4 +78,4 @@ jobs:
             echo "Release $VERSION already exists; refusing to overwrite it."
             exit 1
           fi
-          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Automatisch erzeugte Offline-Version der validierten Einzeldatei. ZIP vollständig entpacken und index.html öffnen."
+          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Offline-Version der validierten bereinigten 2.95-Einzeldatei. ZIP vollständig entpacken und index.html öffnen."
