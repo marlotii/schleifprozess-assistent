@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version, beispielsweise v1.0.0"
+        description: "Version, beispielsweise v3.0.0"
         required: true
-        default: "v1.0.0"
+        default: "v3.0.0"
 
 permissions:
   contents: write
@@ -34,7 +34,19 @@ jobs:
           [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Build Windows offline package
+      - name: Validate application source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s index.html
+          grep -q '<title>Schleifprozess Assistent 3.0</title>' index.html
+          ! grep -q 'mobile.css' index.html
+          ! grep -q 'mobile-setup.js' index.html
+          test "$(stat -c%s index.html)" -eq 536911
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "08445ee17e50925a25b3e7f41a67692d67dfff060478d775144d6e297bc2637d"
+          test "$(git hash-object index.html)" = "98172e2ec2a1df81a805f54fb2131bab5c584e63"
+
+      - name: Build offline package
         shell: bash
         run: |
           set -euo pipefail
@@ -42,9 +54,10 @@ jobs:
           PACKAGE="Schleifprozess_Assistent_Offline_${VERSION}"
           rm -rf "$PACKAGE" "$PACKAGE.zip"
           mkdir -p "$PACKAGE/assets"
-          cp source-original.html "$PACKAGE/index.html"
-          cp manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE/"
+          cp index.html manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE/"
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png "$PACKAGE/assets/"
+          if [[ -f Schleifprozess_Assistent_3_0_VALIDATION.md ]]; then cp Schleifprozess_Assistent_3_0_VALIDATION.md "$PACKAGE/"; fi
+          if [[ -f Schleifprozess_Assistent_3_0_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_3_0_TESTLOG.txt "$PACKAGE/"; fi
           sha256sum "$PACKAGE/index.html" "$PACKAGE/manifest.webmanifest" "$PACKAGE/sw.js" "$PACKAGE/assets/"*.png > "$PACKAGE/SHA256SUMS.txt"
           grep -qi '<!doctype html' "$PACKAGE/index.html"
           grep -qi '</html>' "$PACKAGE/index.html"
@@ -63,4 +76,4 @@ jobs:
             echo "Release $VERSION already exists; refusing to overwrite it."
             exit 1
           fi
-          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Automatisch erzeugte Windows-Offline-Version. ZIP vollständig entpacken und index.html öffnen."
+          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Automatisch erzeugte Offline-Version der validierten Einzeldatei. ZIP vollständig entpacken und index.html öffnen."
