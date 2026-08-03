@@ -1,292 +1,41 @@
-/* iPhone/mobile layout patch. Desktop rendering remains unchanged. */
-@media (max-width: 760px) {
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-  body { padding: 0; }
-  button, input, select, textarea { font-size: 16px; }
-  button { min-height: 44px; }
-
-  .app {
-    width: 100%;
-    max-width: 100%;
-    padding: max(8px, env(safe-area-inset-top)) 8px calc(12px + env(safe-area-inset-bottom));
-  }
-
-  .header {
-    position: sticky;
-    top: max(6px, env(safe-area-inset-top));
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 22px;
-  }
-  .brand { min-width: 0; gap: 11px; }
-  .drop { width: 28px; height: 34px; flex: 0 0 auto; }
-  .brand h1 { font-size: 22px; line-height: 1.08; white-space: nowrap; }
-  .top-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, .8fr) minmax(0, 1fr);
-    width: 100%;
-    gap: 6px;
-  }
-  .top-actions button {
-    width: 100%;
-    min-width: 0;
-    min-height: 42px;
-    padding: 7px 5px;
-    border-radius: 12px;
-    font-size: 12px;
-    line-height: 1.15;
-    white-space: normal;
-  }
-
-  .hero { margin-top: 10px; padding: 15px; border-radius: 22px; }
-  .hero h2 { font-size: 24px; }
-  .setup-summary {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px;
-    margin-top: 12px;
-  }
-  .summary-item {
-    min-height: 74px;
-    padding: 11px 12px;
-    border-radius: 15px;
-  }
-  .summary-item span { font-size: 11.5px; }
-  .summary-item strong {
-    font-size: 15px;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-    word-break: normal;
-  }
-
-  .modules { grid-template-columns: 1fr !important; gap: 9px; margin-top: 10px; }
-  .module {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
-    align-items: center;
-    justify-content: initial;
-    gap: 3px 12px;
-    min-height: 0 !important;
-    padding: 14px 15px;
-    border-radius: 20px;
-  }
-  .module:hover { transform: none; }
-  .module-icon {
-    grid-column: 1;
-    grid-row: 1 / 4;
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
-  }
-  .module h3 {
-    grid-column: 2;
-    margin: 0;
-    font-size: 18px;
-    line-height: 1.2;
-  }
-  .module p {
-    grid-column: 2;
-    margin: 2px 0 0;
-    font-size: 13px;
-    line-height: 1.35;
-  }
-  .module b {
-    grid-column: 2;
-    margin: 0;
-    padding-top: 3px;
-    font-size: 12.5px;
-  }
-
-  .overlay {
-    padding: 0;
-    align-items: stretch;
-    justify-content: stretch;
-  }
-  .sheet,
-  #moduleOverlay .sheet,
-  #setupOverlay .sheet {
-    width: 100vw;
-    height: 100dvh;
-    max-width: none;
-    max-height: none;
-    border-radius: 0;
-    border: 0;
-  }
-  .sheet-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 9px;
-    padding: calc(11px + env(safe-area-inset-top)) 12px 10px;
-    align-items: start;
-  }
-  .sheet-head h2 { font-size: 24px; line-height: 1.08; }
-  .sheet-head p { margin-top: 3px; font-size: 12px; line-height: 1.3; }
-  .sheet-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    width: 100%;
-    gap: 7px;
-  }
-  .sheet-actions button {
-    width: 100%;
-    min-width: 0;
-    min-height: 44px;
-    padding: 8px 8px;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.15;
-    white-space: normal;
-  }
-  .setup-save { min-width: 0 !important; font-size: 14px !important; }
-  .sheet-body,
-  #moduleOverlay .sheet-body,
-  #setupOverlay .sheet-body {
-    display: block;
-    min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 12px 12px calc(18px + env(safe-area-inset-bottom));
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-  #setupBody { overflow: visible; padding-right: 0; }
-  #setupTabs,
-  .setup-tabs {
-    position: sticky;
-    top: 0;
-    z-index: 8;
-    display: flex !important;
-    flex-wrap: nowrap;
-    gap: 7px;
-    width: 100%;
-    margin: 0 0 11px;
-    padding: 7px 0 9px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    background: rgba(238, 245, 249, .96);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  #setupTabs::-webkit-scrollbar, .setup-tabs::-webkit-scrollbar { display: none; }
-  #setupTabs button, .setup-tabs button {
-    flex: 0 0 auto;
-    min-width: 154px;
-    min-height: 44px;
-    padding: 8px 11px;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .setup-compact,
-  .compact-grid,
-  .compact-grid.two,
-  .compact-grid.three,
-  .compact-grid.four,
-  .grid,
-  .grid.two,
-  .grid.four,
-  .result-layout,
-  .kpis,
-  .metric-cards,
-  .portal,
-  .cards,
-  .answer-grid,
-  .force-figure,
-  .formula-head,
-  .formula-list,
-  .formula-detail-grid,
-  .formula-detail-grid.no-visual,
-  .formula-application,
-  .issue-workflow,
-  .oil-compare292,
-  .oil-scenes,
-  .oil-action-grid292,
-  .oil-direct-grid292,
-  .oil-input-grid291,
-  .oil-main-number,
-  .oil-action-grid291,
-  .oil-help-tabs291,
-  .oil-help-two,
-  .oil-help-formulas291,
-  .oil-help-nozzle291,
-  .machine-spec-grid293,
-  .wheel-choice-grid294,
-  .wheel-alt-grid294 {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-
-  .section { padding: 14px; border-radius: 19px; margin-bottom: 10px; }
-  .section h3 { font-size: 19px; }
-  .field input, .field select, .field textarea,
-  #setupOverlay .field input, #setupOverlay .field select, #setupOverlay .field textarea {
-    width: 100%;
-    max-width: 100%;
-    min-height: 46px;
-    padding: 10px 11px;
-    font-size: 16px !important;
-  }
-
-  .detail-modal { padding: 0; align-items: stretch; }
-  .detail-card,
-  #detailModal .detail-card,
-  #detailModal .detail-card.oil-help-modal-card,
-  .print-dialog .detail-card {
-    width: 100vw;
-    height: 100dvh;
-    max-width: none;
-    max-height: none;
-    border-radius: 0;
-    padding: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  .detail-head,
-  #detailModal .detail-card.oil-help-modal-card .detail-head {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    padding: calc(12px + env(safe-area-inset-top)) 12px 11px;
-    background: rgba(250, 253, 255, .96);
-    border-bottom: 1px solid var(--line);
-  }
-  .detail-head h3 { font-size: 23px; line-height: 1.12; }
-  .detail-head .notice { font-size: 12px; }
-  .close-x { min-height: 44px; padding: 8px 10px; font-size: 13px; }
-  #detailBody,
-  #detailModal .detail-card.oil-help-modal-card #detailBody,
-  .print-options {
-    padding: 12px 12px calc(18px + env(safe-area-inset-bottom));
-  }
-
-  .formula-category-grid,
-  .issue-category-grid,
-  .material-groups,
-  .oil-equivalents,
-  .knowledge-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .formula-category { min-height: 88px; }
-  .symbol-table { grid-template-columns: 72px minmax(160px, 1fr) 78px; }
-  .compare-row { grid-template-columns: 92px minmax(0, 1fr) 68px; gap: 7px; }
-  .action-card { grid-template-columns: 34px minmax(0, 1fr); }
-  .action-card .prio { grid-column: 2; justify-self: start; }
-  .oil-toolbar-actions292, .oil-toolbar-actions292 .oil-mode-switch { width: 100%; }
-  .oil-toolbar-actions292 .oil-mode-switch { display: grid; grid-template-columns: 1fr; }
-  .oil-toolbar-actions292 button { width: 100%; justify-content: center; }
-  .oil-scene-svg292 { height: 220px; }
-  .oil-scene-summary292 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .oil-soll-control292 { display: grid; }
-  .oil-soll-control292 button { width: 100%; }
+/* Schleifprozess Assistent – funktionale iPhone-Ansicht v3. Desktop bleibt unverändert. */
+@media (max-width:760px){
+html{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;max-width:100%;overflow-x:hidden;padding:0}
+body:has(.overlay.open),body:has(.detail-modal.open){overflow:hidden!important;touch-action:none}
+button,input,select,textarea{font-size:16px!important;-webkit-tap-highlight-color:transparent}
+button{min-height:44px;touch-action:manipulation}
+input,select,textarea{max-width:100%;touch-action:manipulation}
+select{-webkit-appearance:menulist!important;appearance:auto!important;background:#fff!important;position:relative;z-index:2;pointer-events:auto!important}
+.sheet,.section,.detail-card,.summary-item,.module{transform:none!important}
+.overlay,.detail-modal,.sheet,.section,.detail-card{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.app{width:100%;max-width:100%;padding:max(8px,env(safe-area-inset-top)) 8px calc(12px + env(safe-area-inset-bottom))}
+.header{position:sticky;top:max(6px,env(safe-area-inset-top));display:grid!important;grid-template-columns:1fr!important;gap:12px!important;padding:14px!important;border-radius:22px!important}
+.brand{min-width:0;gap:11px}.drop{width:28px;height:34px;flex:0 0 auto}.brand h1{font-size:22px!important;line-height:1.08;white-space:nowrap}
+.top-actions{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(0,.8fr) minmax(0,1fr)!important;width:100%;gap:6px!important}
+.top-actions button{width:100%;min-width:0;min-height:42px;padding:7px 5px!important;border-radius:12px!important;font-size:12px!important;line-height:1.15;white-space:normal}
+.hero{margin-top:10px;padding:15px!important;border-radius:22px!important}.hero h2{font-size:24px!important}
+.setup-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-top:12px!important}
+.summary-item{min-height:74px!important;padding:11px 12px!important;border-radius:15px!important}.summary-item span{font-size:11.5px!important}.summary-item strong{font-size:15px!important;line-height:1.25;overflow-wrap:anywhere}
+.modules{grid-template-columns:1fr!important;gap:9px!important;margin-top:10px!important}
+.module{display:grid!important;grid-template-columns:48px minmax(0,1fr)!important;grid-template-rows:auto!important;align-items:center!important;justify-content:initial!important;gap:3px 12px!important;min-height:76px!important;padding:13px 15px!important;border-radius:20px!important}
+.module:hover{transform:none!important}.module-icon{grid-column:1;grid-row:1;width:48px!important;height:48px!important;border-radius:15px!important}.module h3{grid-column:2;grid-row:1;margin:0!important;font-size:18px!important;line-height:1.2}.module p,.module b{display:none}
+.overlay{padding:0!important;align-items:stretch!important;justify-content:stretch!important}
+.sheet,#moduleOverlay .sheet,#setupOverlay .sheet{width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;border-radius:0!important;border:0!important;overflow:hidden!important;display:grid!important;grid-template-rows:auto minmax(0,1fr)!important}
+.sheet-head{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:9px!important;padding:calc(11px + env(safe-area-inset-top)) 12px 10px!important;align-items:start!important}.sheet-head h2{font-size:24px!important;line-height:1.08}.sheet-head p{margin-top:3px!important;font-size:12px!important;line-height:1.3}
+.sheet-actions{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;width:100%;gap:7px!important}.sheet-actions button{width:100%;min-width:0!important;min-height:44px!important;padding:8px!important;border-radius:12px!important;font-size:14px!important;line-height:1.15;white-space:normal}.setup-save{min-width:0!important;font-size:14px!important}
+#setupOverlay .sheet-body{display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;min-height:0!important;overflow:hidden!important;padding:8px 12px calc(10px + env(safe-area-inset-bottom))!important}
+#setupTabs,.setup-tabs{position:static!important;display:flex!important;flex-wrap:nowrap!important;gap:7px!important;width:100%!important;min-width:0!important;margin:0 0 8px!important;padding:2px 0 8px!important;overflow-x:auto!important;overflow-y:hidden!important;background:transparent!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;scrollbar-width:none}
+#setupTabs::-webkit-scrollbar,.setup-tabs::-webkit-scrollbar{display:none}#setupTabs button,.setup-tabs button{flex:0 0 auto!important;min-width:154px!important;min-height:44px!important;padding:8px 11px!important;font-size:14px!important;white-space:nowrap!important}
+#setupBody{min-height:0!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;padding:0 0 calc(18px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scrollbar-gutter:auto!important}
+#moduleOverlay .sheet-body,#moduleBody,.module-oil{min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 12px calc(20px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;scrollbar-gutter:auto!important}
+.setup-compact,.compact-grid,.compact-grid.two,.compact-grid.three,.compact-grid.four,.grid,.grid.two,.grid.four,.result-layout,.kpis,.metric-cards,.portal,.cards,.answer-grid,.force-figure,.formula-head,.formula-list,.formula-detail-grid,.formula-detail-grid.no-visual,.formula-application,.issue-workflow,.oil-compare292,.oil-scenes,.oil-action-grid292,.oil-direct-grid292,.oil-input-grid291,.oil-main-number,.oil-action-grid291,.oil-help-tabs291,.oil-help-two,.oil-help-formulas291,.oil-help-nozzle291,.machine-spec-grid293,.wheel-choice-grid294,.wheel-alt-grid294,.wheel-compare294{grid-template-columns:minmax(0,1fr)!important}
+.section{padding:14px!important;border-radius:19px!important;margin-bottom:10px!important}.section h3{font-size:19px!important}.field{min-width:0}.field input,.field select,.field textarea,#setupOverlay .field input,#setupOverlay .field select,#setupOverlay .field textarea{width:100%!important;max-width:100%!important;min-height:46px!important;padding:10px 11px!important;font-size:16px!important}
+.detail-modal{padding:0!important;align-items:stretch!important}.detail-card,#detailModal .detail-card,#detailModal .detail-card.oil-help-modal-card,.print-dialog .detail-card{width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;border-radius:0!important;padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.detail-head,#detailModal .detail-card.oil-help-modal-card .detail-head{position:sticky!important;top:0;z-index:10;padding:calc(12px + env(safe-area-inset-top)) 12px 11px!important;background:rgba(250,253,255,.98)!important;border-bottom:1px solid var(--line)}.detail-head h3{font-size:23px!important;line-height:1.12}.detail-head .notice{font-size:12px!important}.close-x{min-height:44px!important;padding:8px 10px!important;font-size:13px!important}
+#detailBody,#detailModal .detail-card.oil-help-modal-card #detailBody,.print-options{min-height:0;padding:12px 12px calc(18px + env(safe-area-inset-bottom))!important}
+.literature-figure,.compact-figure{position:static!important;width:100%!important;max-width:100%!important}.literature-figure img,.compact-figure img,#detailBody img{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.formula-category-grid,.issue-category-grid,.knowledge-grid{grid-template-columns:minmax(0,1fr)!important}.material-groups{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x;-webkit-overflow-scrolling:touch}.formula-category{min-height:88px!important}.symbol-table{width:100%;min-width:0;grid-template-columns:64px minmax(120px,1fr) 70px!important;overflow-x:auto}.symbol-table div{overflow-wrap:anywhere}.compare-row{grid-template-columns:86px minmax(0,1fr) 64px!important;gap:6px!important}.action-card{grid-template-columns:34px minmax(0,1fr)!important}.action-card .prio{grid-column:2;justify-self:start}
+.oil-toolbar-actions292,.oil-toolbar-actions292 .oil-mode-switch{width:100%}.oil-toolbar-actions292 .oil-mode-switch{display:grid!important;grid-template-columns:1fr!important}.oil-toolbar-actions292 button{width:100%;justify-content:center}.oil-scene-svg292{height:auto!important;min-height:190px;max-height:230px}.oil-scene-summary292{grid-template-columns:repeat(2,minmax(0,1fr))!important}.oil-soll-control292{display:grid!important}.oil-soll-control292 button{width:100%}
 }
-
-@media (max-width: 380px) {
-  .brand h1 { font-size: 20px; }
-  .top-actions { grid-template-columns: 1fr 1fr; }
-  .top-actions #setupBtn { grid-column: 1 / -1; }
-  .setup-summary { grid-template-columns: 1fr !important; }
-  .sheet-head h2 { font-size: 22px; }
-  .sheet-actions { grid-template-columns: 1fr 1fr; }
-}
+@media (max-width:380px){.brand h1{font-size:20px!important}.top-actions{grid-template-columns:1fr 1fr!important}.top-actions #setupBtn{grid-column:1/-1}.setup-summary{grid-template-columns:1fr!important}.sheet-head h2{font-size:22px!important}}
