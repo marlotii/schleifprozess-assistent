@@ -1,4 +1,4 @@
-const CACHE_NAME = "schleifprozess-assistent-v3";
+const CACHE_NAME = "schleifprozess-assistent-v4";
 const APP_BASE = new URL("./", self.location.href);
 const INDEX_URL = new URL("./index.html", APP_BASE).href;
 const PRECACHE_URLS = [
@@ -6,6 +6,7 @@ const PRECACHE_URLS = [
   INDEX_URL,
   new URL("./manifest.webmanifest", APP_BASE).href,
   new URL("./mobile.css", APP_BASE).href,
+  new URL("./mobile-setup.js", APP_BASE).href,
   new URL("./assets/icon-192.png", APP_BASE).href,
   new URL("./assets/icon-512.png", APP_BASE).href,
   new URL("./assets/apple-touch-icon.png", APP_BASE).href
@@ -52,7 +53,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  if (/\/(index\.html|mobile\.css|manifest\.webmanifest)$/.test(url.pathname)) {
+  if (/\/(index\.html|mobile\.css|mobile-setup\.js|manifest\.webmanifest)$/.test(url.pathname)) {
     event.respondWith(networkFirst(request));
     return;
   }
