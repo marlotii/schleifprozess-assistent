@@ -52,9 +52,21 @@ jobs:
               if '</head>' not in html:
                   raise SystemExit('Missing </head> in index.html')
               html = html.replace('</head>', marker + '\n</head>', 1)
+          image_key_fixes = {
+              "'heat_damage'": "'heat_clean'",
+              "'grain_compare'": "'wheel_clean'",
+              "'wheel_composition'": "'wheel_clean'",
+              "'qs_visual'": "'qs_clean'",
+          }
+          for old, new in image_key_fixes.items():
+              html = html.replace(old, new)
           p.write_text(html, encoding='utf-8')
           PY
           grep -q 'mobile.css' _site/index.html
+          ! grep -q "'heat_damage'" _site/index.html
+          ! grep -q "'grain_compare'" _site/index.html
+          ! grep -q "'wheel_composition'" _site/index.html
+          ! grep -q "'qs_visual'" _site/index.html
           test "$(stat -c%s _site/index.html)" -gt 800000
 
       - name: Configure GitHub Pages
