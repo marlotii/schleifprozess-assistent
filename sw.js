@@ -1,10 +1,11 @@
-const CACHE_NAME = "schleifprozess-assistent-v1";
+const CACHE_NAME = "schleifprozess-assistent-v2";
 const APP_BASE = new URL("./", self.location.href);
 const INDEX_URL = new URL("./index.html", APP_BASE).href;
 const PRECACHE_URLS = [
   new URL("./", APP_BASE).href,
   INDEX_URL,
   new URL("./manifest.webmanifest", APP_BASE).href,
+  new URL("./mobile.css", APP_BASE).href,
   new URL("./assets/icon-192.png", APP_BASE).href,
   new URL("./assets/icon-512.png", APP_BASE).href,
   new URL("./assets/apple-touch-icon.png", APP_BASE).href
