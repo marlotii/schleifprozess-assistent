@@ -27,6 +27,19 @@ self.addEventListener("activate", event => {
   );
 });
 
+async function networkFirst(request, fallback) {
+  try {
+    const response = await fetch(request, { cache: "no-store" });
+    if (response && response.ok) {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    return (await caches.match(request)) || (fallback ? await caches.match(fallback) : Response.error());
+  }
+}
+
 self.addEventListener("fetch", event => {
   const request = event.request;
   if (request.method !== "GET") return;
@@ -35,25 +48,20 @@ self.addEventListener("fetch", event => {
   if (url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate") {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(INDEX_URL, copy));
-          }
-          return response;
-        })
-        .catch(() => caches.match(INDEX_URL))
-    );
+    event.respondWith(networkFirst(request, INDEX_URL));
+    return;
+  }
+
+  if (/\/(index\.html|mobile\.css|manifest\.webmanifest)$/.test(url.pathname)) {
+    event.respondWith(networkFirst(request));
     return;
   }
 
   event.respondWith(
-    caches.match(request).then(cached => cached || fetch(request).then(response => {
+    caches.match(request).then(cached => cached || fetch(request).then(async response => {
       if (response && response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(request, response.clone());
       }
       return response;
     }))
