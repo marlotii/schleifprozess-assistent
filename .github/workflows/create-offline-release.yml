@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version, beispielsweise v2.95.1"
+        description: "Version, beispielsweise v2.95.2"
         required: true
-        default: "v2.95.1"
+        default: "v2.95.2"
 
 permissions:
   contents: write
@@ -39,14 +39,12 @@ jobs:
         run: |
           set -euo pipefail
           test -s index.html
+          grep -qi '<!doctype html' index.html
+          grep -qi '</html>' index.html
           grep -q '<title>Schleifprozess Assistent</title>' index.html
-          grep -q 'id="v295-functional-fix-js"' index.html
-          grep -q 'function parseNumber295' index.html
-          ! grep -q 'mobile.css' index.html
-          ! grep -q 'mobile-setup.js' index.html
-          test "$(stat -c%s index.html)" -eq 918985
-          test "$(sha256sum index.html | cut -d' ' -f1)" = "2aa683ef8de047fc6f56ba4cfd49bb9904d3622ec7064520a4bfb70070af53a9"
-          test "$(git hash-object index.html)" = "d9d4bdc47f65e5c89b1beac1656225d97bd09011"
+          test "$(stat -c%s index.html)" -eq 1145485
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "22e5cf076ceac8a89b45a3aa174824896c74320269f5f5ffba48876c39dabd4c"
+          test "$(git hash-object index.html)" = "04b9ea4689f94bf2e5b3a6be0b2c4f41479ed76b"
 
       - name: Build offline package
         shell: bash
@@ -58,8 +56,8 @@ jobs:
           mkdir -p "$PACKAGE/assets"
           cp index.html manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE/"
           cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png "$PACKAGE/assets/"
-          if [[ -f Schleifprozess_Assistent_2_95_BEREINIGT_PRUEFBERICHT.md ]]; then cp Schleifprozess_Assistent_2_95_BEREINIGT_PRUEFBERICHT.md "$PACKAGE/"; fi
-          if [[ -f Schleifprozess_Assistent_2_95_BEREINIGT_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_2_95_BEREINIGT_TESTLOG.txt "$PACKAGE/"; fi
+          if [[ -f Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_PRUEFBERICHT.md ]]; then cp Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_PRUEFBERICHT.md "$PACKAGE/"; fi
+          if [[ -f Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_TESTLOG.txt "$PACKAGE/"; fi
           sha256sum "$PACKAGE/index.html" "$PACKAGE/manifest.webmanifest" "$PACKAGE/sw.js" "$PACKAGE/assets/"*.png > "$PACKAGE/SHA256SUMS.txt"
           grep -qi '<!doctype html' "$PACKAGE/index.html"
           grep -qi '</html>' "$PACKAGE/index.html"
@@ -78,4 +76,4 @@ jobs:
             echo "Release $VERSION already exists; refusing to overwrite it."
             exit 1
           fi
-          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Offline-Version der validierten bereinigten 2.95-Einzeldatei. ZIP vollständig entpacken und index.html öffnen."
+          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Offline-Version der validierten Deutsch-/Englisch-Fassung mit erweiterter Wissensdatenbank und Herstellerlinks. ZIP vollständig entpacken und index.html öffnen."
