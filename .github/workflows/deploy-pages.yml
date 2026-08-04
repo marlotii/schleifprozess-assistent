@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate approved 2.95 file
+      - name: Validate approved DE-EN knowledge version
         shell: bash
         run: |
           set -euo pipefail
@@ -30,11 +30,9 @@ jobs:
           grep -qi '<!doctype html' index.html
           grep -qi '</html>' index.html
           grep -q '<title>Schleifprozess Assistent</title>' index.html
-          grep -q 'id="v295-functional-fix-js"' index.html
-          grep -q 'function parseNumber295' index.html
-          test "$(stat -c%s index.html)" -eq 918985
-          test "$(sha256sum index.html | cut -d' ' -f1)" = "2aa683ef8de047fc6f56ba4cfd49bb9904d3622ec7064520a4bfb70070af53a9"
-          test "$(git hash-object index.html)" = "d9d4bdc47f65e5c89b1beac1656225d97bd09011"
+          test "$(stat -c%s index.html)" -eq 1145485
+          test "$(sha256sum index.html | cut -d' ' -f1)" = "22e5cf076ceac8a89b45a3aa174824896c74320269f5f5ffba48876c39dabd4c"
+          test "$(git hash-object index.html)" = "04b9ea4689f94bf2e5b3a6be0b2c4f41479ed76b"
 
       - name: Build GitHub Pages artifact
         shell: bash
