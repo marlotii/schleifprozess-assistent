@@ -1,79 +1,86 @@
 name: Create Offline Release
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
+  workflow_run:
+    workflows:
+      - Deploy GitHub Pages
+    types:
+      - completed
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Version, beispielsweise v2.95.2"
-        required: true
-        default: "v2.95.2"
 
 permissions:
   contents: write
 
 jobs:
   release:
+    if: >-
+      ${{ github.event_name == 'workflow_dispatch' ||
+          (github.event.workflow_run.conclusion == 'success' &&
+           github.event.workflow_run.head_branch == 'main') }}
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: v1.0.0
+      RELEASE_TITLE: Schleifprozess Assistent v1.0.0
+      ZIP_NAME: Schleifprozess_Assistent_Offline_v1.0.0.zip
+      PACKAGE_DIR: Schleifprozess_Assistent_Offline_v1.0.0
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Determine version
-        id: version
+      - name: Resolve deployed commit
+        id: ref
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
-            VERSION="${GITHUB_REF_NAME}"
+          if [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+            echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
           else
-            VERSION="${{ inputs.version }}"
+            echo "sha=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
           fi
-          [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Validate application source
+      - name: Checkout deployed commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.ref.outputs.sha }}
+
+      - name: Refuse to overwrite an existing release or tag
         shell: bash
         run: |
           set -euo pipefail
-          test -s index.html
-          grep -qi '<!doctype html' index.html
-          grep -qi '</html>' index.html
-          grep -q '<title>Schleifprozess Assistent</title>' index.html
-          test "$(stat -c%s index.html)" -eq 1145485
-          test "$(sha256sum index.html | cut -d' ' -f1)" = "22e5cf076ceac8a89b45a3aa174824896c74320269f5f5ffba48876c39dabd4c"
-          test "$(git hash-object index.html)" = "04b9ea4689f94bf2e5b3a6be0b2c4f41479ed76b"
-
-      - name: Build offline package
-        shell: bash
-        run: |
-          set -euo pipefail
-          VERSION="${{ steps.version.outputs.version }}"
-          PACKAGE="Schleifprozess_Assistent_Offline_${VERSION}"
-          rm -rf "$PACKAGE" "$PACKAGE.zip"
-          mkdir -p "$PACKAGE/assets"
-          cp index.html manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE/"
-          cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png "$PACKAGE/assets/"
-          if [[ -f Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_PRUEFBERICHT.md ]]; then cp Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_PRUEFBERICHT.md "$PACKAGE/"; fi
-          if [[ -f Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_TESTLOG.txt ]]; then cp Schleifprozess_Assistent_2_95_DE_EN_WISSEN_LINKS_TESTLOG.txt "$PACKAGE/"; fi
-          sha256sum "$PACKAGE/index.html" "$PACKAGE/manifest.webmanifest" "$PACKAGE/sw.js" "$PACKAGE/assets/"*.png > "$PACKAGE/SHA256SUMS.txt"
-          grep -qi '<!doctype html' "$PACKAGE/index.html"
-          grep -qi '</html>' "$PACKAGE/index.html"
-          zip -r "$PACKAGE.zip" "$PACKAGE"
-          test -s "$PACKAGE.zip"
-          echo "PACKAGE_FILE=$PACKAGE.zip" >> "$GITHUB_ENV"
-
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          VERSION="${{ steps.version.outputs.version }}"
-          if gh release view "$VERSION" >/dev/null 2>&1; then
-            echo "Release $VERSION already exists; refusing to overwrite it."
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists; refusing to overwrite it." >&2
             exit 1
           fi
-          gh release create "$VERSION" "$PACKAGE_FILE" --title "Schleifprozess Assistent $VERSION" --notes "Offline-Version der validierten Deutsch-/Englisch-Fassung mit erweiterter Wissensdatenbank und Herstellerlinks. ZIP vollständig entpacken und index.html öffnen."
+          if git ls-remote --exit-code --tags origin "refs/tags/$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Tag $RELEASE_TAG already exists; refusing to overwrite it." >&2
+            exit 1
+          fi
+
+      - name: Validate and build Windows offline ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f source-original.html
+          test -f manifest.webmanifest
+          test -f sw.js
+          test -f README-OFFLINE.txt
+          test -f assets/icon-192.png
+          test -f assets/icon-512.png
+          test -f assets/apple-touch-icon.png
+          rm -rf "$PACKAGE_DIR" "$ZIP_NAME"
+          mkdir -p "$PACKAGE_DIR/assets"
+          cp source-original.html "$PACKAGE_DIR/index.html"
+          cp manifest.webmanifest sw.js README-OFFLINE.txt "$PACKAGE_DIR/"
+          cp assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png "$PACKAGE_DIR/assets/"
+          (
+            cd "$PACKAGE_DIR"
+            sha256sum index.html manifest.webmanifest sw.js README-OFFLINE.txt               assets/icon-192.png assets/icon-512.png assets/apple-touch-icon.png > SHA256SUMS.txt
+          )
+          zip -r -9 "$ZIP_NAME" "$PACKAGE_DIR"
+          unzip -t "$ZIP_NAME"
+          unzip -p "$ZIP_NAME" "$PACKAGE_DIR/index.html" | grep -qi '^<!doctype html>'
+          test -s "$ZIP_NAME"
+
+      - name: Create immutable v1.0.0 release
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" "$ZIP_NAME"             --target "${{ steps.ref.outputs.sha }}"             --title "$RELEASE_TITLE"             --notes "Validated GitHub Pages deployment and Windows offline package. The offline index.html is the unchanged supplied original application."
