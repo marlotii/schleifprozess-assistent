@@ -1,23 +1,28 @@
 # Schleifprozess Assistent
 
-Installierbare und offlinefähige Web-App auf Basis der unveränderten Originaldatei `source-original.html`.
+Progressive-Web-App-Verpackung der unveränderten HTML-Anwendung `Grinding_v3.00.html`.
 
-## Dateien
+## Sicherheits- und Integritätsprinzip
 
-- `source-original.html`: unveränderte hochgeladene Originaldatei
-- `index.html`: technische PWA-Kopie mit ausschliesslich Manifest-, Icon-, Theme- und Service-Worker-Ergänzungen
-- `manifest.webmanifest`: Web-App-Manifest
-- `sw.js`: projektpfadfähiger Service Worker
-- `assets/`: PWA-Icons
-- `.github/workflows/deploy-pages.yml`: GitHub-Pages-Deployment
-- `.github/workflows/create-offline-release.yml`: automatisches Offline-ZIP bei Versions-Tags
-- `SOURCE_HASHES.txt`: SHA-256-Prüfsummen
-- `TECHNICAL_ANALYSIS.md`: technische Analyse und Abweichungsdokumentation
+- `source-original.html` ist eine bytegenaue Kopie der gelieferten Originaldatei.
+- `index.html` enthält ausschliesslich die technisch notwendigen PWA-Ergänzungen: Manifest-Link, Theme-Color, Apple-Touch-Icon und Service-Worker-Registrierung.
+- Bestehende Funktionen, Texte, Daten, Bilder, Berechnungen, Filter, Layouts und Interaktionen wurden nicht absichtlich verändert.
+- Der Service Worker cached nur Ressourcen derselben Origin. Fremde Domains werden nicht gecached.
 
-## Sicherheit
+## Original-Prüfsumme
 
-Die Anwendung enthält umfangreiche technische Daten und eingebettete Bilder. Bei einem öffentlichen Repository sind der vollständige Quelltext, sämtliche Daten und alle eingebetteten Inhalte weltweit abrufbar.
+```text
+SHA-256  f4848dbd5c9a0357c0dc77b61149fa4df3b4ba1a466aa093cf3b415ffdf7adfe  source-original.html
+```
 
-## Originalschutz
+## GitHub Pages
 
-`source-original.html` wird nicht technisch verändert. Die Prüfsumme muss mit der hochgeladenen Originaldatei übereinstimmen.
+Der Workflow `.github/workflows/deploy-pages.yml` validiert die Dateien, erstellt `_site`, lädt ein Pages-Artefakt hoch und veröffentlicht es mit GitHub Pages.
+
+Falls GitHub Pages noch nicht auf GitHub Actions eingestellt ist:
+
+`Settings → Pages → Build and deployment → Source → GitHub Actions`
+
+## Offline-Version
+
+Die Windows-Offline-Version verwendet die unveränderte Originalanwendung als `index.html`. Hinweise stehen in `README-OFFLINE.txt`.

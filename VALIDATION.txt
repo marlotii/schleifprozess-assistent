@@ -1,15 +1,51 @@
-PASS: Original hash preserved
-PASS: Offline hash equals original
-PASS: PWA index has doctype
-PASS: PWA index has closing html
-PASS: Manifest linked once
-PASS: Service worker registration once
-PASS: No external script tag
-PASS: No external stylesheet tag
-PASS: Offline ZIP exists
-PASS: Original and PWA built-in FINAL_QA 34/34
-PASS: Original and PWA screenshots pixel-identical (0 changed pixels)
-PASS: JavaScript syntax validated for all original and PWA script blocks
-PASS: Manifest valid JSON
-PASS: Workflow files parse as YAML
-NOTE: Hosted localhost navigation was blocked by the execution environment; hosted endpoint validation will be performed through GitHub Pages after deployment.
+VALIDATION – Schleifprozess Assistent PWA v1.0.0
+==================================================
+
+Original SHA-256: f4848dbd5c9a0357c0dc77b61149fa4df3b4ba1a466aa093cf3b415ffdf7adfe
+PWA SHA-256:      e4fc1d1dc64562a3d96434a1a4122d4f5bbc9c9b22d497a60ab42c318335e3cb
+
+Statische Prüfungen:
+- [BESTANDEN] Original hash identity — f4848dbd5c9a0357c0dc77b61149fa4df3b4ba1a466aa093cf3b415ffdf7adfe
+- [BESTANDEN] Original SHA expected — f4848dbd5c9a0357c0dc77b61149fa4df3b4ba1a466aa093cf3b415ffdf7adfe
+- [BESTANDEN] Index doctype
+- [BESTANDEN] Index closing html
+- [BESTANDEN] Manifest linked
+- [BESTANDEN] Service worker registered
+- [BESTANDEN] Apple touch icon linked
+- [BESTANDEN] Only approved HTML additions
+- [BESTANDEN] Manifest valid JSON
+- [BESTANDEN] Manifest required fields — name,short_name,description,start_url,scope,display,background_color,theme_color,lang,icons
+- [BESTANDEN] Manifest relative project paths
+- [BESTANDEN] source inline JavaScript syntax — 10 blocks
+- [BESTANDEN] index inline JavaScript syntax — 11 blocks
+- [BESTANDEN] Service worker JavaScript syntax
+- [BESTANDEN] YAML syntax create-offline-release.yml
+- [BESTANDEN] YAML syntax deploy-pages.yml
+- [BESTANDEN] PNG icon-192.png — PNG (192, 192)
+- [BESTANDEN] PNG icon-512.png — PNG (512, 512)
+- [BESTANDEN] PNG apple-touch-icon.png — PNG (180, 180)
+- [BESTANDEN] ZIP integrity
+- [BESTANDEN] ZIP required structure — []
+- [BESTANDEN] ZIP offline index unchanged
+- [BESTANDEN] Repository file set — []
+
+Chromium-Inhalts- und Interaktionsprüfungen (isolierte Dokumentdarstellung):
+- [BESTANDEN] Original title — Schleifprozess Assistent
+- [BESTANDEN] Original runtime JavaScript
+- [BESTANDEN] Original modules rendered — 7
+- [BESTANDEN] PWA title — Schleifprozess Assistent
+- [BESTANDEN] PWA runtime JavaScript
+- [BESTANDEN] PWA modules rendered — 7
+- [BESTANDEN] Setup overlay opens
+- [BESTANDEN] Setup controls render — 7
+- [BESTANDEN] Setup overlay closes
+- [BESTANDEN] Module overlay opens
+- [BESTANDEN] Module content renders — 1039
+- [BESTANDEN] Module overlay closes
+- [BESTANDEN] Print dialog opens
+- [BESTANDEN] Print dialog closes
+- [BESTANDEN] Visual layout matches original — size=(1440, 900), bbox=None, mean_abs_diff=0.000000
+
+Umgebungsgrenze: Direkte file://- und localhost-/HTTP-Navigation wird im bereitgestellten Chromium durch eine Administratorrichtlinie blockiert (ERR_BLOCKED_BY_ADMINISTRATOR). Service-Worker- und echter Offlinebetrieb werden deshalb nach dem GitHub-Pages-Deployment live geprüft.
+
+Lokales Zwischenergebnis: BESTANDEN MIT DOKUMENTIERTER UMGEBUNGSGRENZE

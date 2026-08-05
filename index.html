@@ -360,6 +360,11 @@ button{touch-action:manipulation}.section,.module,.summary-item,.detail-card,.sh
 .lang-switch button.active{background:#fff!important;color:#123f60!important}
 @media(max-width:760px){.lang-switch{order:-1;width:100%;display:grid;grid-template-columns:1fr 1fr}.lang-switch button{width:100%}}
 </style>
+
+<!-- PWA-Ergänzungen v1.0.0: technisch notwendige Metadaten -->
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#173f5f">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 </head>
 <body><div class="app">
 <header class="header glass"><div class="brand"><div class="drop"></div><div><h1>Schleifprozess Assistent</h1></div></div><div class="top-actions"><button id="setupBtn" data-i18n="editSetup">Setup bearbeiten</button><button id="printBtn" data-i18n="print">Drucken</button><button id="resetBtn" data-i18n="reset">Zurücksetzen</button></div></header>
@@ -1570,4 +1575,617 @@ if(typeof renderHome==='function')renderHome();
 })();
 </script>
 
+<style id="v297-simple-oil-css">
+/* 2.97 - simplified KSS flow/pressure workflow. Only the oil/KSS module is affected. */
+.module-oil{overflow-y:auto!important;overflow-x:hidden!important}
+.oil-simple297{display:grid;gap:13px;color:#17354d}
+.oil-simple-control297{margin:0!important;padding:18px!important;border-radius:24px!important;background:rgba(255,255,255,.96)!important}
+.oil-simple-head297{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.oil-simple-head297 h3{margin:3px 0 5px!important;font-size:23px!important}
+.oil-simple-head297 p{margin:0;color:#60798b;font-size:13px;line-height:1.45;max-width:780px}
+.oil-simple-kicker297{display:block;font-size:10.5px;font-weight:950;letter-spacing:.09em;text-transform:uppercase;color:#0b72aa}
+.oil-simple-help297{min-height:42px;border:1px solid #cbdce8;border-radius:14px;background:#f7fbfe;color:#175578;padding:8px 12px;font-weight:900;white-space:nowrap}
+.oil-simple-modes297{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.oil-simple-mode297{min-height:78px;border:1px solid #d5e2ea;border-radius:17px;background:#fff;padding:12px 14px;text-align:left;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:center}
+.oil-simple-mode297:hover{border-color:#75acd0;background:#f7fbfe}
+.oil-simple-mode297.active{border-color:#1478b5;background:linear-gradient(145deg,#e9f6fe,#fff);box-shadow:0 10px 24px rgba(17,112,174,.13)}
+.oil-simple-mode297 i{width:36px;height:36px;border-radius:12px;background:#e8f3f9;color:#146d9e;display:grid;place-items:center;font-style:normal;font-size:18px;font-weight:950}
+.oil-simple-mode297.active i{background:#1478b5;color:#fff}
+.oil-simple-mode297 strong,.oil-simple-mode297 small{display:block}.oil-simple-mode297 strong{font-size:16px}.oil-simple-mode297 small{margin-top:3px;color:#60798b;font-size:11.5px;line-height:1.35;font-weight:600}
+.oil-simple-inputs297{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px;max-width:760px}
+.oil-simple-inputs297 .field input{min-height:54px!important;font-size:22px!important;font-weight:900!important;border-radius:15px!important}
+.oil-simple-inputs297 .field label{font-size:14px!important}.oil-simple-inputs297 .field small{font-size:11.5px!important}
+.oil-simple-explain297{margin-top:12px;padding:11px 13px;border-radius:14px;background:#edf6fb;border:1px solid #d7e8f2;color:#45657a;font-size:12.5px;line-height:1.45}
+.oil-simple-explain297 b{color:#17354d}
+.oil-simple-advanced297{margin-top:11px;border:1px solid #dce7ee;border-radius:14px;background:#f8fbfd;overflow:hidden}
+.oil-simple-advanced297 summary{cursor:pointer;padding:10px 12px;font-size:12px;font-weight:900;color:#49687c;list-style:none}.oil-simple-advanced297 summary::-webkit-details-marker{display:none}
+.oil-simple-advanced297[open] summary{border-bottom:1px solid #dce7ee}.oil-simple-advanced-body297{display:grid;grid-template-columns:210px 1fr;gap:12px;align-items:end;padding:12px}
+.oil-simple-setup297{font-size:11.5px;line-height:1.5;color:#60798b}.oil-simple-setup297 b{color:#17354d}
+.oil-simple-kpis297{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}
+.oil-simple-kpi297{border:1px solid #dce7ee;border-radius:16px;background:#fbfdff;padding:12px;min-width:0}.oil-simple-kpi297.primary{background:#edf7fd;border-color:#c9e3f2}.oil-simple-kpi297.good{background:#edf8f1;border-color:#c8e3d0}.oil-simple-kpi297.warn{background:#fff8e8;border-color:#ead8ae}.oil-simple-kpi297.bad{background:#fff1ee;border-color:#efc9c2}
+.oil-simple-kpi297 span{display:block;font-size:10.5px;color:#61798b}.oil-simple-kpi297 strong{display:block;margin-top:5px;font-size:22px;line-height:1.1;overflow-wrap:anywhere}.oil-simple-kpi297 small{display:block;margin-top:4px;font-size:10px;color:#688091;line-height:1.3}
+.oil-simple-status297{margin-top:10px;padding:11px 13px;border-radius:14px;font-size:12px;line-height:1.45;border:1px solid #dce7ee}.oil-simple-status297.good{background:#eef8f2;border-color:#c9e4d1}.oil-simple-status297.warn{background:#fff8e9;border-color:#ead8ae}.oil-simple-status297.bad{background:#fff1ee;border-color:#efc9c2}
+.oil-simple-card297{padding:16px!important}.oil-simple-card297 .oil-scene-svg292{height:220px!important}
+.oil-simple-card297 .oil-scene-summary292{grid-template-columns:repeat(3,minmax(0,1fr))}
+.oil-simple-target-note297{margin-top:9px;padding:10px 12px;border-radius:14px;background:#edf8f1;border:1px solid #cfe6d7;font-size:11.5px;line-height:1.45;color:#526d80}
+.oil-simple-target-action297{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;padding:11px 12px;border-radius:15px;background:#edf8f1;border:1px solid #cfe6d7}.oil-simple-target-action297 span,.oil-simple-target-action297 strong,.oil-simple-target-action297 small{display:block}.oil-simple-target-action297 span{font-size:10.5px;color:#587184}.oil-simple-target-action297 strong{font-size:20px}.oil-simple-target-action297 small{font-size:10px;color:#648071;margin-top:2px}.oil-simple-target-action297 button{border:0;border-radius:12px;background:#1174ba;color:#fff;padding:10px 13px;font-weight:900;white-space:nowrap}
+.oil-simple-actions297{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:1050px){.oil-simple-kpis297{grid-template-columns:repeat(2,minmax(0,1fr))}.oil-simple-actions297{grid-template-columns:1fr!important}}
+@media(max-width:700px){.oil-simple-modes297,.oil-simple-inputs297,.oil-simple-kpis297,.oil-simple-advanced-body297,.oil-simple-card297 .oil-scene-summary292{grid-template-columns:1fr}.oil-simple-mode297{min-height:70px}.oil-simple-head297{display:grid}.oil-simple-help297{width:100%}.oil-simple-target-action297{display:grid}.oil-simple-target-action297 button{width:100%}.oil-simple-card297 .oil-scene-svg292{height:190px!important}}
+</style>
+<script id="v297-simple-oil-js">
+(function(){
+'use strict';
+const n297=v=>{const p=window.parseNumber295?window.parseNumber295(v):Number(v);return Number.isFinite(p)?p:null};
+const fmt297=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toLocaleString('de-CH',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
+function ensureOil297(){
+ const o=state.oil||(state.oil={});
+ if(!['volume','pressure'].includes(o.controlMode))o.controlMode='volume';
+ o.time=Math.max(Number(o.time)||30,.01);
+ o.volume=Math.max(Number(o.volume)||0,0);
+ o.referencePressure=Math.max(Number(o.referencePressure??o.pressure)||0,0);
+ o.tolerancePct=Math.max(1,Math.min(50,Number(o.tolerancePct)||10));
+ o.mode='volume';
+ o.autoFill=o.controlMode==='pressure';
+}
+window.oilEnsureState=ensureOil297;
+window.oilCalc=function(){
+ ensureOil297();
+ const k=state.setup.kss,o=state.oil,A=Math.max(getNozzleArea(),.000001),rho=Math.max(Number(k.densityUse)||0,.000001),rhoSI=rho*1000,cd=Math.max(Number(k.cd)||.92,.01),t=Math.max(Number(o.time)||0,.01),targetSpeed=Math.max(Number(state.setup.process.wheelSpeed)||0,.000001),tolPct=o.tolerancePct,tol=tolPct/100,storedPressure=Math.max(Number(o.referencePressure)||0,0);
+ let pressure,actualVolume,actualFlow,actualSpeed;
+ if(o.controlMode==='pressure'){
+   pressure=storedPressure;
+   actualSpeed=pressure>0?cd*Math.sqrt(2*pressure*1e5/rhoSI):0;
+   actualFlow=.06*A*actualSpeed;
+   actualVolume=actualFlow*t/60;
+ }else{
+   actualVolume=Math.max(Number(o.volume)||0,0);
+   actualFlow=actualVolume*60/t;
+   actualSpeed=actualFlow/(.06*A);
+   pressure=rhoSI/2*Math.pow(actualSpeed/cd,2)/1e5;
+ }
+ const actualWeight=actualVolume*rho,targetFlow=.06*A*targetSpeed,targetVolume=targetFlow*t/60,targetWeight=targetVolume*rho,targetPressure=rhoSI/2*Math.pow(targetSpeed/cd,2)/1e5;
+ const lowRatio=1-tol,highRatio=1+tol,ratio=actualSpeed/targetSpeed,lowSpeed=targetSpeed*lowRatio,highSpeed=targetSpeed*highRatio,lowFlow=.06*A*lowSpeed,highFlow=.06*A*highSpeed,lowVolume=lowFlow*t/60,highVolume=highFlow*t/60,lowWeight=lowVolume*rho,highWeight=highVolume*rho,targetPressureLow=targetPressure*Math.pow(lowRatio,2),targetPressureHigh=targetPressure*Math.pow(highRatio,2),pressureDelta=targetPressure-pressure;
+ const lineLoss=Math.max(Number(k.lineLoss)||0,0),count=Math.max(1,Number(k.count)||1),areaAtActualFlow=actualFlow>0?actualFlow/(.06*targetSpeed):A,areaPerNozzle=areaAtActualFlow/count,eqRoundDia=Math.sqrt(4*areaPerNozzle/Math.PI),slotHeight=Math.max(Number(k.height)||Number(k.slotHeight)||2,.1),eqFlatWidth=areaPerNozzle/slotHeight;
+ const theoreticalSpeed=storedPressure>0?cd*Math.sqrt(2*storedPressure*1e5/rhoSI):0,theoreticalFlow=.06*A*theoreticalSpeed,theoreticalVolume=theoreticalFlow*t/60;
+ const atSeconds=sec=>({sec,theoryVolume:theoreticalFlow*sec/60,theoryWeight:theoreticalFlow*sec/60*rho,targetVolume:targetFlow*sec/60,targetWeight:targetFlow*sec/60*rho,lowVolume:lowFlow*sec/60,highVolume:highFlow*sec/60});
+ o.pressure=pressure;
+ return{A,rho,rhoSI,cd,t,mode:'volume',controlMode:o.controlMode,p:pressure,tolPct,autoFill:o.controlMode==='pressure',manualMeasurement:o.controlMode==='volume',theorySpeed:theoreticalSpeed,theoryFlow:theoreticalFlow,theoryVolume:theoreticalVolume,theoryWeight:theoreticalVolume*rho,actualFlow,actualSpeed,actualVolume,actualWeight,ratio,lowRatio,highRatio,targetSpeed,targetFlow,targetVolume,targetWeight,targetPressureTheory:targetPressure,recommendedPressure:targetPressure,targetPressureLow,targetPressureHigh,lowSpeed,highSpeed,lowFlow,highFlow,lowVolume,highVolume,lowWeight,highWeight,deviationTheory:0,deviationTarget:targetFlow>0?(actualFlow-targetFlow)/targetFlow*100:0,pressureDelta,areaAtActualFlow,eqRoundDia,eqFlatWidth,slotHeight,count,atSeconds,flow:actualFlow,speed:actualSpeed,vol:actualVolume,weight:actualWeight,referenceFlow:actualFlow,referenceSpeed:actualSpeed,referencePressure:pressure,pressure,newPressure:targetPressure,targetPressure,targetPump:targetPressure+lineLoss,targetPumpLow:targetPressureLow+lineLoss,targetPumpHigh:targetPressureHigh+lineLoss,sourceLabel:o.controlMode==='volume'?'Liter + Zeit; Druck berechnet':'Druck + Zeit; Liter berechnet'};
+};
+window.oilApplyAutoValue=function(save=true){const r=oilCalc();state.oil.volume=Number(r.actualVolume.toFixed(4));state.oil.referencePressure=Number(r.pressure.toFixed(4));state.oil.pressure=state.oil.referencePressure;if(save)saveState()};
+function status297(r){return oilStatus(r)}
+function modeButtons297(r){return `<div class="oil-simple-modes297"><button class="oil-simple-mode297 ${r.controlMode==='volume'?'active':''}" data-oil-control="volume"><i>L</i><span><strong>Liter + Zeit eingeben</strong><small>Einfachste Praxisprüfung: Zeit stoppen, Wasser/KSS auffangen und Liter eintragen. Der Druck wird berechnet.</small></span></button><button class="oil-simple-mode297 ${r.controlMode==='pressure'?'active':''}" data-oil-control="pressure"><i>bar</i><span><strong>Druck + Zeit eingeben</strong><small>Düse und Druck sind bekannt. Die erwartete Menge in Liter wird automatisch berechnet.</small></span></button></div>`}
+function inputPanel297(r){
+ const volumeValue=Number((Number(state.oil.volume)||0).toFixed(3)),pressureValue=Number((Number(state.oil.referencePressure)||0).toFixed(3)),timeValue=Number((Number(state.oil.time)||0).toFixed(2));
+ const main=r.controlMode==='volume'?field('oilSimpleVolume','Menge',volumeValue,'Liter · gemessen oder gewünschter Sollwert'):field('oilSimplePressure','Druck',pressureValue,'bar · verfügbar vor der Düse');
+ const explanation=r.controlMode==='volume'?`<b>Druck muss nicht bekannt sein.</b> Aus ${fmt297(r.actualVolume)} Liter in ${fmt297(r.t,0)} Sekunden werden Volumenstrom, Strahlgeschwindigkeit und der rechnerisch erforderliche Düsendruck bestimmt.`:`<b>Die Menge ist kein zweiter Eingabewert.</b> Aus ${fmt297(r.pressure)} bar, Düsengeometrie und ${fmt297(r.t,0)} Sekunden werden die Liter automatisch berechnet.`;
+ return `<div class="section oil-simple-control297"><div class="oil-simple-head297"><div><span class="oil-simple-kicker297">KSS-Durchfluss einfach berechnen</span><h3>Nur zwei Werte eingeben</h3><p>Wähle entweder Liter oder bar als Führungsgrösse. Alles andere wird daraus berechnet.</p></div><button id="oilHelpBtn" class="oil-simple-help297">Theorie & Hilfe</button></div>${modeButtons297(r)}<div class="oil-simple-inputs297">${field('oilSimpleTime','Messzeit',timeValue,'Sekunden')}${main}</div><div class="oil-simple-explain297">${explanation}</div><details class="oil-simple-advanced297"><summary>Weitere Angaben anzeigen</summary><div class="oil-simple-advanced-body297">${field('oilSimpleTolerance','Toleranz',state.oil.tolerancePct,'% zur Schleifscheibengeschwindigkeit')}<div class="oil-simple-setup297"><b>${oilSetupName()}</b><br>Gesamtfläche ${fmt297(r.A)} mm² · Dichte ${fmt297(r.rho,3)} kg/l · C<sub>d</sub> ${fmt297(r.cd)} · Schleifscheibe ${fmt297(r.targetSpeed)} m/s · Leitungsverlust ${fmt297(Number(state.setup.kss.lineLoss)||0)} bar</div></div></details><div id="oilSimpleKpis">${kpis297(r)}</div></div>`;
+}
+function kpis297(r){
+ const s=status297(r),cls=s.level;
+ const first=r.controlMode==='volume'?['Volumenstrom',`${fmt297(r.actualFlow)} l/min`,'aus Liter und Zeit']:['Menge in '+fmt297(r.t,0)+' s',`${fmt297(r.actualVolume)} L`,'aus Druck und Düse'];
+ const second=r.controlMode==='volume'?['Berechneter Düsendruck',`${fmt297(r.pressure)} bar`,'Druck muss nicht gemessen sein']:['Volumenstrom',`${fmt297(r.actualFlow)} l/min`,'berechneter Durchfluss'];
+ return `<div class="oil-simple-kpis297"><div class="oil-simple-kpi297 primary"><span>${first[0]}</span><strong>${first[1]}</strong><small>${first[2]}</small></div><div class="oil-simple-kpi297"><span>${second[0]}</span><strong>${second[1]}</strong><small>${second[2]}</small></div><div class="oil-simple-kpi297"><span>Strahlgeschwindigkeit</span><strong>${fmt297(r.actualSpeed)} m/s</strong><small>aus Durchfluss und Düsenfläche</small></div><div class="oil-simple-kpi297 ${cls}"><span>Verhältnis KSS : Scheibe</span><strong>${fmt297(r.ratio,3)} : 1</strong><small>Ziel ${fmt297(r.lowRatio,2)} bis ${fmt297(r.highRatio,2)}</small></div></div><div class="oil-simple-status297 ${cls}"><b>${s.title}.</b> ${s.text}</div>`;
+}
+function currentCard297(r){
+ const modeText=r.controlMode==='volume'?`${fmt297(r.actualVolume)} Liter wurden in ${fmt297(r.t,0)} Sekunden eingegeben. Der Druck ist daraus berechnet.`:`${fmt297(r.pressure)} bar und ${fmt297(r.t,0)} Sekunden wurden eingegeben. Die Menge ist daraus berechnet.`;
+ return `<div class="section oil-integrated-card292 ist oil-simple-card297"><div class="oil-dynamic292"><div class="oil-scene-head292"><div><h3>IST aus deiner Eingabe</h3><p>${modeText}</p></div><span class="oil-state-pill292 ${oilPillClass(r)}">${r.ratio>=r.lowRatio&&r.ratio<=r.highRatio?'passt':r.ratio<r.lowRatio?'zu wenig':'zu viel'}</span></div>${oilSceneSvg292(r,false)}<div class="oil-scene-summary292"><div class="accent"><span>Menge / ${fmt297(r.t,0)} s</span><strong>${fmt297(r.actualVolume)} L</strong></div><div><span>Volumenstrom</span><strong>${fmt297(r.actualFlow)} l/min</strong></div><div><span>${r.controlMode==='volume'?'Berechneter Druck':'Eingegebener Druck'}</span><strong>${fmt297(r.pressure)} bar</strong></div></div></div></div>`;
+}
+function targetCard297(r){
+ const pumpNote=Number(state.setup.kss.lineLoss)>0?`Mit hinterlegtem Leitungsverlust: etwa ${fmt297(r.targetPump)} bar an der Pumpe.`:'Kein zusätzlicher Leitungsverlust hinterlegt.';
+ return `<div class="section oil-integrated-card292 soll oil-simple-card297"><div class="oil-dynamic292 oil-soll-dynamic292"><div class="oil-scene-head292"><div><h3>SOLL für 1:1</h3><p>Die KSS-Strahlgeschwindigkeit entspricht der Schleifscheibengeschwindigkeit.</p></div><span class="oil-state-pill292 info">±${fmt297(r.tolPct,0)} %</span></div>${oilSceneSvg292(r,true)}<div class="oil-scene-summary292"><div class="accent"><span>Sollmenge / ${fmt297(r.t,0)} s</span><strong>${fmt297(r.targetVolume)} L</strong></div><div><span>Soll-Volumenstrom</span><strong>${fmt297(r.targetFlow)} l/min</strong></div><div><span>Soll-Düsendruck</span><strong>${fmt297(r.targetPressure)} bar</strong></div></div><div class="oil-simple-target-note297">Zulässige Menge in ${fmt297(r.t,0)} s: <b>${fmt297(r.lowVolume)} bis ${fmt297(r.highVolume)} Liter</b>. ${pumpNote}</div>${r.controlMode==='pressure'?`<div class="oil-simple-target-action297"><div><span>Druck direkt auf Soll setzen</span><strong>${fmt297(r.targetPressure)} bar</strong><small>Danach werden ${fmt297(r.targetVolume)} Liter in ${fmt297(r.t,0)} s erwartet.</small></div><button id="applyOilTarget">Soll-Druck übernehmen</button></div>`:''}</div></div>`;
+}
+function actions297(r){
+ const s=status297(r),within=s.level==='good',increase=r.pressureDelta>0;
+ const a1=within?{cls:'good',title:'Einstellung beibehalten',value:`${fmt297(r.pressure)} bar`,text:`Der Durchfluss liegt im Toleranzfeld. Zur Bestätigung dieselbe Messzeit nochmals prüfen.`}:{cls:s.level,title:increase?'Druck erhöhen':'Druck reduzieren',value:`${fmt297(r.targetPressure)} bar`,text:`Aktuell rechnerisch ${fmt297(r.pressure)} bar. Auf etwa ${fmt297(r.targetPressure)} bar einstellen und erneut messen.`};
+ const a2={cls:'good',title:'Messziel',value:`${fmt297(r.targetVolume)} L`,text:`Diese Menge soll in ${fmt297(r.t,0)} Sekunden aufgefangen werden. Zulässig: ${fmt297(r.lowVolume)}–${fmt297(r.highVolume)} L.`};
+ const a3=r.controlMode==='volume'?{cls:'',title:'Druck unbekannt',value:'Kein Problem',text:`Die Liter-Messung reicht. Der berechnete Düsendruck beträgt ${fmt297(r.pressure)} bar; die Maschinenanzeige kann wegen Leitungsverlusten abweichen.`}:{cls:'',title:'Erwartete Menge',value:`${fmt297(r.actualVolume)} L`,text:`Bei ${fmt297(r.pressure)} bar und der bekannten Düse werden in ${fmt297(r.t,0)} Sekunden etwa ${fmt297(r.actualVolume)} Liter erwartet.`};
+ const cards=[a1,a2,a3];
+ return `<div class="section oil-actions292"><div class="oil-actions-head292"><div><h3>Was ist jetzt zu tun?</h3><p>Drei klare Werte, ohne parallele Eingaben oder doppelte Berechnungswege.</p></div></div><div class="oil-action-grid292 oil-simple-actions297">${cards.map((x,i)=>`<div class="oil-action-card292 ${x.cls}"><div class="oil-action-top292"><i>${i+1}</i><strong>${x.title}</strong></div><strong>${x.value}</strong><p>${x.text}</p></div>`).join('')}</div></div>`;
+}
+function results297(r){return `<div class="oil-compare292">${currentCard297(r)}${targetCard297(r)}</div>${oilToleranceBar292(r)}${actions297(r)}`}
+window.renderOil=function(){ensureOil297();const r=oilCalc();return `<div class="oil-simple297">${inputPanel297(r)}<div id="oilSimpleResults">${results297(r)}</div></div>`};
+function bindDynamic297(){
+ if($('applyOilTarget'))$('applyOilTarget').onclick=()=>{const r=oilCalc();state.oil.referencePressure=Number(r.targetPressure.toFixed(4));state.oil.pressure=state.oil.referencePressure;saveState();renderModule()};
+ if($('oilHelpBtn'))$('oilHelpBtn').onclick=()=>openOilHelp('basic');
+ document.querySelectorAll('[data-oil-help]').forEach(b=>b.onclick=()=>openOilHelp(b.dataset.oilHelp));
+}
+window.updateOilSimple297=function(){const r=oilCalc(),k=$('oilSimpleKpis'),res=$('oilSimpleResults');if(k)k.innerHTML=kpis297(r);if(res)res.innerHTML=results297(r);bindDynamic297();saveState()};
+const oldBindModule297=window.bindModule;
+window.bindModule=function(){
+ if(currentModule!=='oil')return oldBindModule297();
+ document.querySelectorAll('[data-oil-control]').forEach(b=>b.onclick=()=>{state.oil.controlMode=b.dataset.oilControl;saveState();renderModule()});
+ const time=$('oilSimpleTime');if(time)time.oninput=()=>{const v=n297(time.value);if(v!==null){state.oil.time=Math.max(v,.01);updateOilSimple297()}};
+ const vol=$('oilSimpleVolume');if(vol)vol.oninput=()=>{const v=n297(vol.value);if(v!==null){state.oil.volume=Math.max(v,0);updateOilSimple297()}};
+ const pressure=$('oilSimplePressure');if(pressure)pressure.oninput=()=>{const v=n297(pressure.value);if(v!==null){state.oil.referencePressure=Math.max(v,0);state.oil.pressure=state.oil.referencePressure;updateOilSimple297()}};
+ const tolerance=$('oilSimpleTolerance');if(tolerance)tolerance.oninput=()=>{const v=n297(tolerance.value);if(v!==null){state.oil.tolerancePct=Math.max(1,Math.min(50,v));updateOilSimple297()}};
+ bindDynamic297();
+};
+window.oilHelpContent=function(tab,r){
+ if(tab==='time'){
+   const times=[10,15,30,45,60,r.t].filter((v,i,a)=>a.indexOf(v)===i).sort((a,b)=>a-b);
+   return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>Einfachster Praxistest</h4><div class="oil-help-note291"><strong>1.</strong> Messzeit festlegen. <strong>2.</strong> KSS/Wasser auffangen. <strong>3.</strong> Liter eingeben. Daraus werden Q = V · 60 / t, v = Q / (0,06 · A) und der rechnerische Druck p = ρ/2 · (v/C<sub>d</sub>)² berechnet.</div></div><div class="oil-help-section291"><h4>Sollmengen für das aktuelle Setup</h4><table class="oil-help-table291"><thead><tr><th>Messzeit</th><th>1:1-Sollmenge</th><th>Zulässiger Bereich</th></tr></thead><tbody>${times.map(sec=>{const x=r.atSeconds(sec);return `<tr><td>${fmt297(sec,0)} s</td><td>${fmt297(x.targetVolume)} L</td><td>${fmt297(x.lowVolume)}–${fmt297(x.highVolume)} L</td></tr>`}).join('')}</tbody></table></div></div>`;
+ }
+ if(tab==='nozzle')return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>Düse und Durchfluss</h4><div class="oil-help-two"><div class="oil-help-note291"><strong>Düse bekannt</strong><br>Die freie Gesamtfläche wird aus Anzahl und Geometrie berechnet. Damit kann aus Liter pro Zeit die Strahlgeschwindigkeit bestimmt werden.</div><div class="oil-help-note291"><strong>Düse verengt</strong><br>Filter, Ventile, Ablagerungen oder beschädigte Düsen verändern den realen Betriebspunkt. Bei deutlicher Abweichung nicht blind nur den Pumpendruck erhöhen.</div></div><div class="oil-help-warning291">Die berechneten bar sind der idealisierte Druck am wirksamen Düsenquerschnitt. Eine Maschinen- oder Pumpenanzeige kann wegen Leitungsverlusten höher liegen.</div></div></div>`;
+ return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>Zwei Wege – dieselbe Berechnung</h4><div class="oil-help-two"><div class="oil-help-note291"><strong>Liter + Zeit</strong><br>Geeignet, wenn der Druck unbekannt ist. Aus der aufgefangenen Menge folgen Volumenstrom, Strahlgeschwindigkeit und rechnerischer Düsendruck.</div><div class="oil-help-note291"><strong>Druck + Zeit</strong><br>Geeignet, wenn Druck und Düse bekannt sind. Daraus folgen Strahlgeschwindigkeit, Volumenstrom und die erwartete Liter-Menge.</div></div></div><div class="oil-help-section291"><h4>Formeln</h4><div class="oil-help-formulas291"><div class="oil-help-formula291"><span>Volumenstrom</span><strong>Q = V · 60 / t</strong><p>V in Liter, t in Sekunden.</p></div><div class="oil-help-formula291"><span>Strahlgeschwindigkeit</span><strong>v = Q / (0,06 · A)</strong><p>A in mm².</p></div><div class="oil-help-formula291"><span>Druck</span><strong>p = ρ/2 · (v/C<sub>d</sub>)²</strong><p>Rechnerischer Düsendruck.</p></div></div></div></div>`;
+};
+const oldQA297=window.FINAL_QA;
+window.FINAL_QA={...(oldQA297||{}),version:'2.97',run:()=>{const base=oldQA297?.run?oldQA297.run():{tests:[]};const save={...state.oil},kss={...state.setup.kss},speed=state.setup.process.wheelSpeed;state.setup.kss={...state.setup.kss,nozzleType:'flat',count:2,width:8,height:2,densityUse:.8,cd:.92,lineLoss:0};state.setup.process.wheelSpeed=21;state.oil={...state.oil,controlMode:'pressure',referencePressure:5,time:45,tolerancePct:20,volume:0};let a=oilCalc();state.oil={...state.oil,controlMode:'volume',volume:a.actualVolume,time:45,tolerancePct:20};let b=oilCalc();const near=(x,y,t=1e-5)=>Math.abs(x-y)<=t,extra=[['KSS bar zu Liter',near(a.actualVolume,46.838754,1e-5)],['KSS Liter zu bar',near(b.pressure,5,1e-5)],['KSS Zielmenge',near(a.targetVolume,30.24,1e-8)],['KSS Zieldruck',near(a.targetPressure,2.08412,1e-4)]];state.oil=save;state.setup.kss=kss;state.setup.process.wheelSpeed=speed;const tests=[...(base.tests||[]),...extra];return{...base,version:'2.97',tests,total:tests.length,passed:tests.filter(x=>x[1]).length,ok:tests.every(x=>x[1])}}};
+try{saveState();renderHome();if(currentModule==='oil')renderModule()}catch(e){console.error('2.97 oil patch',e)}
+})();
+</script>
+
+
+<style id="v298-kss-simple-bilingual-css">
+/* 2.98 - bilingual, three-way KSS input and minimum-pressure fallback. Only the oil/KSS module is affected. */
+.module-oil{overflow-y:auto!important;overflow-x:hidden!important}
+.oil298{display:grid;gap:14px;color:#17354d}
+.oil298 .section{margin:0!important}
+.oil298-control{padding:18px!important;border-radius:24px!important;background:rgba(255,255,255,.96)!important}
+.oil298-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.oil298-head span{display:block;font-size:10.5px;font-weight:950;letter-spacing:.09em;text-transform:uppercase;color:#0b72aa}
+.oil298-head h3{margin:4px 0 5px!important;font-size:24px!important}
+.oil298-head p{margin:0;color:#60798b;font-size:13px;line-height:1.45;max-width:760px}
+.oil298-help{min-height:42px;border:1px solid #cbdce8;border-radius:14px;background:#f7fbfe;color:#175578;padding:8px 12px;font-weight:900;white-space:nowrap}
+.oil298-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
+.oil298-mode{min-height:82px;border:1px solid #d5e2ea;border-radius:17px;background:#fff;padding:12px 14px;text-align:left;display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center}
+.oil298-mode:hover{border-color:#75acd0;background:#f7fbfe}
+.oil298-mode.active{border-color:#1478b5;background:linear-gradient(145deg,#e9f6fe,#fff);box-shadow:0 10px 24px rgba(17,112,174,.13)}
+.oil298-mode i{width:38px;height:38px;border-radius:12px;background:#e8f3f9;color:#146d9e;display:grid;place-items:center;font-style:normal;font-size:17px;font-weight:950}
+.oil298-mode.active i{background:#1478b5;color:#fff}
+.oil298-mode strong,.oil298-mode small{display:block}.oil298-mode strong{font-size:15px}.oil298-mode small{margin-top:3px;color:#60798b;font-size:11px;line-height:1.35;font-weight:600}
+.oil298-suggestion{display:grid;grid-template-columns:minmax(220px,1.15fr) repeat(3,minmax(120px,.7fr)) auto;gap:9px;align-items:stretch;margin-top:14px;padding:11px;border:1px solid #cce2ef;border-radius:18px;background:linear-gradient(145deg,#edf8fe,#fff)}
+.oil298-suggestion-main,.oil298-suggestion-mini{padding:9px 10px;border-radius:13px;background:rgba(255,255,255,.82);min-width:0}
+.oil298-suggestion span{display:block;font-size:10.5px;color:#61798b}.oil298-suggestion strong{display:block;margin-top:4px;font-size:20px;line-height:1.1;overflow-wrap:anywhere}
+.oil298-suggestion-main strong{font-size:28px;color:#0d75b7}.oil298-suggestion-main small{display:block;margin-top:4px;font-size:10.5px;color:#60798b}
+.oil298-use-target{align-self:stretch;border:0;border-radius:13px;background:#1174ba;color:#fff;padding:9px 13px;font-weight:900;white-space:nowrap}
+.oil298-use-target:disabled{background:#b7c5ce;color:#f5f7f8;cursor:not-allowed}
+.oil298-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}
+.oil298-field{min-width:0}.oil298-field label{display:block;font-size:13px;font-weight:900;margin-bottom:5px}.oil298-field-wrap{position:relative}
+.oil298-field input{width:100%;min-height:54px;border:1px solid #c7d6e1;border-radius:15px;background:#fff;padding:10px 66px 10px 12px;font-size:21px;font-weight:900;outline:none;font-variant-numeric:tabular-nums}
+.oil298-field input:focus{border-color:#68a5d1;box-shadow:0 0 0 4px rgba(36,126,190,.12)}
+.oil298-unit{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:850;color:#60798b}
+.oil298-field small{display:block;margin-top:4px;font-size:10.5px;line-height:1.35;color:#667f90}
+.oil298-explain{margin-top:11px;padding:10px 12px;border-radius:14px;background:#edf6fb;border:1px solid #d7e8f2;color:#45657a;font-size:12px;line-height:1.45}
+.oil298-advanced{margin-top:10px;border:1px solid #dce7ee;border-radius:14px;background:#f8fbfd;overflow:hidden}
+.oil298-advanced summary{cursor:pointer;padding:10px 12px;font-size:12px;font-weight:900;color:#49687c;list-style:none}.oil298-advanced summary::-webkit-details-marker{display:none}
+.oil298-advanced[open] summary{border-bottom:1px solid #dce7ee}.oil298-advanced-body{display:grid;grid-template-columns:220px 1fr;gap:12px;align-items:end;padding:12px}
+.oil298-setup{font-size:11.5px;line-height:1.5;color:#60798b}.oil298-setup b{color:#17354d}
+.oil298-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.oil298-kpi{border:1px solid #dce7ee;border-radius:16px;background:#fbfdff;padding:12px;min-width:0}
+.oil298-kpi.primary{background:#edf7fd;border-color:#c9e3f2}.oil298-kpi.good{background:#edf8f1;border-color:#c8e3d0}.oil298-kpi.warn{background:#fff8e8;border-color:#ead8ae}.oil298-kpi.bad{background:#fff1ee;border-color:#efc9c2}
+.oil298-kpi span{display:block;font-size:10.5px;color:#61798b}.oil298-kpi strong{display:block;margin-top:5px;font-size:20px;line-height:1.1;overflow-wrap:anywhere}.oil298-kpi small{display:block;margin-top:4px;font-size:9.8px;color:#688091;line-height:1.3}
+.oil298-status{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:12px;padding:17px!important;border-radius:22px!important}
+.oil298-status.good{background:linear-gradient(145deg,#edf8f1,#fff)!important;border-color:#c4e2cd!important}
+.oil298-status.warn{background:linear-gradient(145deg,#fff8e8,#fff)!important;border-color:#ead5aa!important}
+.oil298-status.bad{background:linear-gradient(145deg,#fff0ed,#fff)!important;border-color:#efc5bd!important}
+.oil298-status h3{margin:0 0 6px!important;font-size:22px!important}.oil298-status p{margin:0;font-size:13px;line-height:1.5;color:#526d80}
+.oil298-status-value{display:grid;grid-template-columns:1fr 1fr;gap:8px}.oil298-status-value div{border-radius:14px;background:rgba(255,255,255,.76);padding:10px}
+.oil298-status-value span{display:block;font-size:10px;color:#61798b}.oil298-status-value strong{display:block;margin-top:4px;font-size:18px}
+.oil298-boundary{padding:18px!important;border-radius:22px!important;background:linear-gradient(145deg,#fff5df,#fff)!important;border:1px solid #e8cf96!important}
+.oil298-boundary-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.oil298-boundary h3{margin:0 0 5px!important;font-size:22px!important}.oil298-boundary p{margin:0;color:#675a36;font-size:12.5px;line-height:1.48}
+.oil298-boundary-pill{padding:6px 10px;border-radius:999px;background:#f3bd46;color:#4f3c12;font-size:11px;font-weight:950;white-space:nowrap}
+.oil298-boundary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:13px}
+.oil298-boundary-card{border:1px solid #ead9b3;border-radius:16px;background:rgba(255,255,255,.82);padding:13px;min-width:0}
+.oil298-boundary-card.recommended{border-color:#75b4d8;background:#eff8fd}.oil298-boundary-card span{display:block;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:#7c662e}
+.oil298-boundary-card.recommended span{color:#176d9d}.oil298-boundary-card strong{display:block;margin-top:6px;font-size:18px;line-height:1.2}.oil298-boundary-card p{margin-top:7px;font-size:11px;line-height:1.43;color:#5f6f79}
+.oil298-targetband{padding:15px 17px!important;border-radius:22px!important;background:rgba(255,255,255,.96)!important}
+.oil298-targetband h3{margin:0 0 11px!important;font-size:18px!important}.oil298-target-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.oil298-target-grid div{border:1px solid #dce7ee;border-radius:14px;background:#f7fafc;padding:10px}.oil298-target-grid span{display:block;font-size:10px;color:#61798b}.oil298-target-grid strong{display:block;margin-top:4px;font-size:16px}
+/* 2.99 - restore the existing IST/SOLL jet graphic without changing the 2.98 input logic. */
+.oil298-visual-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;align-items:stretch}
+.oil298-visual-card{margin:0!important;padding:15px 16px!important;overflow:hidden;border-radius:23px!important;background:rgba(255,255,255,.95)!important;min-width:0}
+.oil298-visual-card.current{border-top:5px solid #247fb3!important}.oil298-visual-card.target{border-top:5px solid #2e9658!important}
+.oil298-visual-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}.oil298-visual-head h3{margin:0!important;font-size:22px!important}.oil298-visual-head p{margin:4px 0 0;font-size:11.5px;line-height:1.4;color:#60798b}
+.oil298-visual-pill{flex:0 0 auto;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:950;white-space:nowrap}.oil298-visual-pill.good{background:#e4f4ea;color:#217344}.oil298-visual-pill.warn{background:#fff2d7;color:#986306}.oil298-visual-pill.bad{background:#ffe7e3;color:#b63128}.oil298-visual-pill.info{background:#e8f3fb;color:#176b97}.oil298-visual-pill.target{background:#e8f3fb;color:#176b97;width:auto!important;height:auto!important;border:0!important;border-radius:999px!important}
+.oil298-scene{width:100%;height:244px;min-height:244px;display:block;shape-rendering:geometricPrecision;text-rendering:geometricPrecision}.oil298-scene text{font-family:var(--font-ui);font-weight:700}
+.oil298-visual-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px}.oil298-visual-summary>div{border:1px solid #dce8ef;border-radius:14px;background:#f4f9fc;padding:10px;min-width:0}.oil298-visual-summary span{display:block;font-size:10px;color:#61798b}.oil298-visual-summary strong{display:block;margin-top:4px;font-size:16px;line-height:1.15;color:#17354d;overflow-wrap:anywhere}.oil298-visual-summary .accent strong{color:#0d76bd}.oil298-visual-card.target .oil298-visual-summary .accent strong{color:#278c50}
+@media(max-width:1260px){.oil298-visual-grid{grid-template-columns:1fr}.oil298-scene{height:230px;min-height:230px}}
+@media(max-width:620px){.oil298-visual-summary{grid-template-columns:1fr}.oil298-scene{height:205px;min-height:205px}}
+@media(max-width:1250px){.oil298-suggestion{grid-template-columns:repeat(2,minmax(0,1fr))}.oil298-use-target{min-height:48px}.oil298-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.oil298-modes,.oil298-inputs,.oil298-status,.oil298-boundary-grid{grid-template-columns:1fr}.oil298-status-value{grid-template-columns:1fr 1fr}.oil298-target-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oil298-advanced-body{grid-template-columns:1fr}}
+@media(max-width:620px){.oil298-suggestion,.oil298-kpis,.oil298-status-value,.oil298-target-grid{grid-template-columns:1fr}.oil298-head{display:grid}.oil298-help{width:100%}.oil298-mode{min-height:70px}.oil298-field input{font-size:19px}}
+</style>
+
+<style id="v300-kss-clarity-css">
+/* Version 3.00 – only KSS readability, visible tolerance input and tolerance bar. */
+.oil298{gap:14px!important}
+.oil298-control{padding:18px!important}
+.oil298-head{align-items:center!important;margin-bottom:14px!important}
+.oil298-head>div>span{font-size:12px!important}
+.oil298-head h3{font-size:27px!important;margin:4px 0 0!important}
+.oil298-head p{display:none!important}
+.oil298-help{min-height:46px!important;font-size:14px!important}
+.oil298-modes{gap:10px!important}
+.oil298-mode{min-height:64px!important;padding:11px 14px!important}
+.oil298-mode i{width:40px!important;height:40px!important;font-size:15px!important}
+.oil298-mode strong{font-size:17px!important}
+.oil298-mode small{display:none!important}
+.oil298-suggestion{grid-template-columns:minmax(240px,1.4fr) repeat(2,minmax(150px,.7fr)) auto!important;gap:10px!important;padding:13px!important;margin-top:12px!important}
+.oil298-suggestion-main strong{font-size:30px!important}
+.oil298-suggestion-main span,.oil298-suggestion-mini span{font-size:12px!important}
+.oil298-suggestion-main small{font-size:12px!important}
+.oil298-suggestion-mini strong{font-size:20px!important}
+.oil298-use-target{min-height:50px!important;font-size:14px!important;padding:10px 15px!important}
+.oil298-inputs{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:11px!important;margin-top:13px!important}
+.oil298-field label{font-size:15px!important;margin-bottom:7px!important}
+.oil298-field input{min-height:58px!important;font-size:23px!important;padding-right:68px!important}
+.oil298-unit{font-size:14px!important}
+.oil298-field small{font-size:12px!important;line-height:1.35!important}
+.oil298-explain{display:none!important}
+.oil298-advanced{margin-top:12px!important}
+.oil298-advanced summary{font-size:14px!important;padding:12px 14px!important}
+.oil298-advanced-body{grid-template-columns:1fr!important}
+.oil298-setup{font-size:13px!important;line-height:1.55!important}
+.oil298-visual-head{align-items:center!important;margin-bottom:8px!important}
+.oil298-visual-head h3{font-size:25px!important}
+.oil298-visual-head p{display:none!important}
+.oil298-visual-pill{font-size:13px!important;padding:7px 11px!important}
+.oil298-scene{height:250px!important;min-height:250px!important}
+.oil298-scene text{font-size:16px!important}
+.oil298-scene text:nth-of-type(1){font-size:18px!important}
+.oil298-scene text:nth-of-type(2){font-size:19px!important}
+.oil298-scene text:nth-of-type(3){font-size:25px!important}
+.oil298-scene text:nth-of-type(4){font-size:18px!important}
+.oil298-scene text:nth-of-type(5),.oil298-scene text:nth-of-type(6){font-size:16px!important}
+.oil298-visual-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin-top:7px!important}
+.oil298-visual-summary>div{padding:12px!important}
+.oil298-visual-summary span{font-size:12px!important}
+.oil298-visual-summary strong{font-size:21px!important}
+.oil300-tolerance{padding:18px!important;border-radius:22px!important;background:rgba(255,255,255,.96)!important}
+.oil300-tolerance-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.oil300-tolerance-head h3{margin:0!important;font-size:24px!important}
+.oil300-current{text-align:right}.oil300-current span{display:block;font-size:12px;color:#60798b}.oil300-current strong{display:block;margin-top:3px;font-size:25px;color:#17354d}
+.oil300-scale{position:relative;height:104px;margin-top:10px}
+.oil300-track{position:absolute;left:0;right:0;top:42px;height:22px;border-radius:999px;background:#f2c7c1;border:1px solid #e5b7b0;overflow:hidden}
+.oil300-band{position:absolute;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#a7d9ae,#5dbb75,#a7d9ae)}
+.oil300-center{position:absolute;top:28px;height:43px;width:4px;background:#17354d;border-radius:4px;transform:translateX(-50%);z-index:3}
+.oil300-pointer{position:absolute;top:0;transform:translateX(-50%);z-index:5}
+.oil300-pointer:after{content:"";display:block;margin:5px auto 0;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:16px solid #df493c}
+.oil300-pointer.good:after{border-top-color:#278f50}.oil300-pointer.warn:after{border-top-color:#d09313}
+.oil300-pointer b{display:block;padding:5px 9px;border-radius:10px;background:#fff;border:1px solid #d7e4ec;box-shadow:0 4px 10px rgba(20,50,70,.10);font-size:13px;white-space:nowrap;color:#17354d}
+.oil300-label{position:absolute;bottom:0;transform:translateX(-50%);font-size:12px;color:#60798b;white-space:nowrap}
+.oil300-zone{position:absolute;top:71px;font-size:12px;font-weight:900}.oil300-zone.left{left:0;color:#a13a32}.oil300-zone.center{left:50%;transform:translateX(-50%);color:#257b46}.oil300-zone.right{right:0;color:#a13a32}
+.oil300-status{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 19px!important;border-radius:22px!important}
+.oil300-status.good{background:#edf8f1!important;border-color:#c4e2cd!important}.oil300-status.warn{background:#fff8e8!important;border-color:#ead5aa!important}.oil300-status.bad{background:#fff0ed!important;border-color:#efc5bd!important}
+.oil300-status h3{margin:0 0 5px!important;font-size:24px!important}.oil300-status p{margin:0;font-size:15px;line-height:1.45;color:#526d80}
+.oil300-status-range{flex:0 0 auto;text-align:right}.oil300-status-range span{display:block;font-size:12px;color:#60798b}.oil300-status-range strong{display:block;margin-top:3px;font-size:21px;color:#17354d}
+.oil300-boundary{padding:18px!important;border-radius:22px!important;background:#fff7e6!important;border-color:#e7cf9e!important}
+.oil300-boundary h3{font-size:24px!important;margin:0 0 12px!important}
+.oil300-boundary-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px;border-radius:16px;background:#fff;border:1px solid #dcc493}
+.oil300-boundary-main span{display:block;font-size:12px;color:#6a5a31}.oil300-boundary-main strong{display:block;margin-top:4px;font-size:20px;color:#17354d}
+.oil300-boundary-main b{font-size:22px;color:#176f9f;white-space:nowrap}
+.oil300-boundary-note{margin-top:10px;font-size:14px;line-height:1.45;color:#5e6e78}
+.oil298-kpis,.oil298-targetband,.oil298-status,.oil298-boundary{display:none!important}
+@media(max-width:1200px){.oil298-suggestion{grid-template-columns:1fr 1fr!important}.oil298-inputs{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){.oil298-suggestion,.oil298-inputs,.oil298-modes,.oil298-visual-summary{grid-template-columns:1fr!important}.oil300-status,.oil300-boundary-main{display:grid;grid-template-columns:1fr}.oil300-current,.oil300-status-range{text-align:left}.oil300-scale{height:112px}.oil300-zone{font-size:11px}.oil298-scene{height:215px!important;min-height:215px!important}.oil298-scene text:nth-of-type(1){font-size:20px!important}.oil298-scene text:nth-of-type(2){font-size:23px!important}.oil298-scene text:nth-of-type(3){font-size:31px!important}.oil298-scene text:nth-of-type(4){font-size:20px!important}.oil298-scene text:nth-of-type(5),.oil298-scene text:nth-of-type(6){font-size:18px!important}}
+</style>
+<script id="v298-kss-simple-bilingual-js">
+(function(){
+'use strict';
+const L298={
+ de:{
+  kicker:'KSS-Durchfluss einfach berechnen',title:'Eine Eingabeart wählen',intro:'Liter, Gewicht oder Druck als Führungsgrösse verwenden. Die übrigen Werte werden automatisch berechnet.',
+  help:'Theorie & Hilfe',volumeMode:'Liter auffangen',volumeModeSub:'Messzeit festlegen und aufgefangene Liter eintragen.',weightMode:'Gewicht messen',weightModeSub:'Aufgefangene Flüssigkeit wiegen und Kilogramm eintragen.',pressureMode:'Druck eingeben',pressureModeSub:'Druck und Messzeit eingeben; die erwarteten Liter werden berechnet.',
+  suggestion:'Vorschlag für',targetLitres:'Sollmenge',targetWeight:'Sollgewicht',targetPressure:'Soll-Druck Maschine',targetFlow:'Soll-Volumenstrom',
+  useVolume:'Soll-Liter einsetzen',useWeight:'Sollgewicht einsetzen',usePressure:'Soll-Druck einsetzen',belowMinimum:'Soll-Druck unter Minimum',
+  time:'Messzeit',timeHelp:'Zeit, während der KSS/Wasser aufgefangen wird.',minimum:'Minimal einstellbarer Druck',minimumHelp:'Optional: kleinster Druck, den die Maschine tatsächlich einstellen kann.',volumeInput:'Aufgefangene Menge',volumeHelp:'Tatsächlich aufgefangene Liter.',weightInput:'Aufgefangenes Gewicht',weightHelp:'Tatsächlich gemessenes Gewicht. Die Dichte wird automatisch berücksichtigt.',pressureInput:'Druck an Maschine / Pumpe',pressureHelp:'Angezeigter Druck. Hinterlegter Leitungsverlust wird bis zur Düse abgezogen.',
+  explainVolume:'Aus Litern und Zeit werden Volumenstrom, Strahlgeschwindigkeit und erforderlicher Druck berechnet.',
+  explainWeight:'Aus Gewicht, Dichte und Zeit werden Liter, Volumenstrom, Strahlgeschwindigkeit und erforderlicher Druck berechnet.',
+  explainPressure:'Aus Druck, Leitungsverlust, Düsenfläche und Zeit werden die erwarteten Liter berechnet.',
+  more:'Weitere Angaben anzeigen',tolerance:'Toleranz',setup:'Aktuelles Düsen-Setup',totalArea:'Gesamtfläche',density:'Dichte',wheel:'Schleifscheibe',lineLoss:'Leitungsverlust',
+  actualLitres:'Berechnete Liter',actualWeight:'Berechnetes Gewicht',flow:'Volumenstrom',speed:'KSS-Geschwindigkeit',machinePressure:'Druck Maschine',nozzlePressure:'Druck an Düse',
+  fits:'Einstellung passt',tooLow:'Zu wenig und zu langsam',tooHigh:'Zu viel und zu schnell',limited:'Mindestdruck ist zu hoch',
+  fitsText:'Der aktuelle Wert liegt im gewählten Toleranzbereich. Dieselbe Messung zur Bestätigung wiederholen.',
+  lowText:'Auf den vorgeschlagenen Sollwert erhöhen und danach mit derselben Messzeit erneut prüfen.',
+  highText:'Auf den vorgeschlagenen Sollwert reduzieren und danach mit derselben Messzeit erneut prüfen.',
+  limitedText:'Der benötigte Maschinendruck liegt unter dem eingetragenen Mindestdruck. Mit der normalen Druckeinstellung allein ist das 1:1-Ziel nicht erreichbar.',
+  nextLitres:'Nächste Messung',nextPressure:'Empfohlener Maschinendruck',ratio:'Geschwindigkeitsverhältnis',targetRange:'Zulässiger Bereich',
+  boundaryTitle:'Lösung bei erreichtem Mindestdruck',boundaryIntro:'Am Mindestdruck kommen weiterhin mehr Liter und eine höhere Strahlgeschwindigkeit als benötigt.',
+  minResult:'Bei Mindestdruck',primarySolution:'Empfohlene Lösung',primaryValue:'Druckreduzierventil / Bypass',primaryText:'Den Druck nach der Pumpe auf den berechneten Soll-Druck reduzieren. So sinken Menge und Strahlgeschwindigkeit gemeinsam.',
+  flowOnly:'Alternative nur für weniger Liter',flowOnlyText:'Die freie Düsenfläche verkleinern. Dadurch sinkt die Menge, die Strahlgeschwindigkeit bleibt bei gleichem Druck jedoch zu hoch.',
+  areaSuggestion:'Vorgeschlagene freie Fläche',speedStill:'Geschwindigkeit bleibt',geometry:'Geometrievorschlag',
+  targetOverview:'Sollwerte für die gewählte Messzeit',low:'Minimum',target:'Ziel',high:'Maximum',machineTarget:'Maschinendruck Ziel',
+  helpBasicTitle:'Drei einfache Wege',helpVolume:'Liter + Zeit: direkte Praxismessung, auch ohne bekannten Druck.',helpWeight:'Gewicht + Zeit: das Gewicht wird über die KSS-Dichte in Liter umgerechnet.',helpPressure:'Druck + Zeit: erwartete Liter werden aus Düse und Druck berechnet.',
+  helpMinimumTitle:'Wenn der Mindestdruck bereits zu hoch ist',helpMinimumText:'Eine kleinere Düse senkt bei gleichem Druck nur die Liter pro Minute, nicht die Strahlgeschwindigkeit. Für weniger Liter und eine langsamere Strömung ist ein niedrigerer Druck an der Düse nötig, zum Beispiel über Druckreduzierventil oder Bypass.',
+  helpFormulaTitle:'Verwendete Beziehungen',helpFormulaText:'Q = V · 60 / t · v = Q / (0,06 · A) · p = ρ/2 · (v/Cd)². Bei Gewicht gilt V = m/ρ.'
+ },
+ en:{
+  kicker:'Simple MWF flow calculation',title:'Choose one input method',intro:'Use litres, collected weight or pressure as the controlling input. All remaining values are calculated automatically.',
+  help:'Theory & help',volumeMode:'Collect litres',volumeModeSub:'Set the measuring time and enter the collected litres.',weightMode:'Weigh collected fluid',weightModeSub:'Weigh the collected fluid and enter kilograms.',pressureMode:'Enter pressure',pressureModeSub:'Enter pressure and time; the expected litres are calculated.',
+  suggestion:'Target for',targetLitres:'Target volume',targetWeight:'Target weight',targetPressure:'Target machine pressure',targetFlow:'Target flow rate',
+  useVolume:'Use target litres',useWeight:'Use target weight',usePressure:'Use target pressure',belowMinimum:'Target below minimum',
+  time:'Measuring time',timeHelp:'Time during which the MWF/water is collected.',minimum:'Minimum adjustable pressure',minimumHelp:'Optional: lowest pressure the machine can actually provide.',volumeInput:'Collected volume',volumeHelp:'Actually collected litres.',weightInput:'Collected weight',weightHelp:'Actually measured weight. Fluid density is included automatically.',pressureInput:'Machine / pump pressure',pressureHelp:'Displayed pressure. The configured line loss is subtracted before the nozzle.',
+  explainVolume:'Litres and time are used to calculate flow rate, jet velocity and required pressure.',
+  explainWeight:'Weight, density and time are used to calculate litres, flow rate, jet velocity and required pressure.',
+  explainPressure:'Pressure, line loss, nozzle area and time are used to calculate the expected litres.',
+  more:'Show additional values',tolerance:'Tolerance',setup:'Current nozzle setup',totalArea:'Total area',density:'Density',wheel:'Grinding wheel',lineLoss:'Line loss',
+  actualLitres:'Calculated litres',actualWeight:'Calculated weight',flow:'Flow rate',speed:'MWF velocity',machinePressure:'Machine pressure',nozzlePressure:'Nozzle pressure',
+  fits:'Setting is within target',tooLow:'Too little and too slow',tooHigh:'Too much and too fast',limited:'Minimum pressure is too high',
+  fitsText:'The current value is within the selected tolerance band. Repeat the same measurement to confirm it.',
+  lowText:'Increase to the proposed target and repeat the measurement using the same time.',
+  highText:'Reduce to the proposed target and repeat the measurement using the same time.',
+  limitedText:'The required machine pressure is below the entered minimum pressure. The 1:1 target cannot be reached by the normal pressure setting alone.',
+  nextLitres:'Next measurement',nextPressure:'Recommended machine pressure',ratio:'Velocity ratio',targetRange:'Permissible range',
+  boundaryTitle:'Solution when minimum pressure is reached',boundaryIntro:'At minimum pressure, both the collected volume and jet velocity are still higher than required.',
+  minResult:'At minimum pressure',primarySolution:'Recommended solution',primaryValue:'Pressure-reducing valve / bypass',primaryText:'Reduce pressure downstream of the pump to the calculated target. This lowers both flow and jet velocity.',
+  flowOnly:'Alternative for fewer litres only',flowOnlyText:'Reduce the free nozzle area. This lowers the volume, but jet velocity remains too high at the same pressure.',
+  areaSuggestion:'Suggested free area',speedStill:'Velocity remains',geometry:'Geometry suggestion',
+  targetOverview:'Targets for the selected measuring time',low:'Minimum',target:'Target',high:'Maximum',machineTarget:'Target machine pressure',
+  helpBasicTitle:'Three simple methods',helpVolume:'Litres + time: direct practical measurement, even when pressure is unknown.',helpWeight:'Weight + time: weight is converted to litres using the MWF density.',helpPressure:'Pressure + time: expected litres are calculated from nozzle and pressure.',
+  helpMinimumTitle:'When the minimum pressure is already too high',helpMinimumText:'At constant pressure, a smaller nozzle reduces litres per minute but not jet velocity. To reduce both volume and velocity, nozzle pressure must be reduced, for example with a pressure-reducing valve or bypass.',
+  helpFormulaTitle:'Relationships used',helpFormulaText:'Q = V · 60 / t · v = Q / (0.06 · A) · p = ρ/2 · (v/Cd)². For weight, V = m/ρ.'
+ }};
+const lang298=()=>currentLang==='en'?'en':'de';
+const t298=k=>L298[lang298()][k]||k;
+const n298=v=>{const p=window.parseNumber295?window.parseNumber295(v):Number(v);return Number.isFinite(p)?p:null};
+const fmt298=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toLocaleString(currentLang==='en'?'en-US':'de-CH',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
+const raw298=(v,d=4)=>Number.isFinite(Number(v))?String(Number(Number(v).toFixed(d))):'';
+function ensure298(){
+ const o=state.oil||(state.oil={});
+ if(!['volume','weight','pressure'].includes(o.controlMode))o.controlMode='volume';
+ o.time=Math.max(Number(o.time)||30,.01);
+ o.volume=Math.max(Number(o.volume)||0,0);
+ o.weight=Math.max(Number(o.weight)||0,0);
+ o.referencePressure=Math.max(Number(o.referencePressure??o.pressure)||0,0);
+ o.minPressure=Math.max(Number(o.minPressure)||0,0);
+ o.tolerancePct=Math.max(1,Math.min(50,Number(o.tolerancePct)||10));
+ o.mode=o.controlMode;
+ o.autoFill=o.controlMode==='pressure';
+}
+window.oilEnsureState=ensure298;
+function nozzleSummary298(){
+ const k=state.setup.kss,c=Math.max(1,Number(k.count)||1),type=k.nozzleType||'custom';
+ const name={de:{round:'Runddüse',flat:'Flachdüse',slot:'Schlitzdüse',annular:'Ringdüse',custom:'Freie Fläche'},en:{round:'Round nozzle',flat:'Flat nozzle',slot:'Slot nozzle',annular:'Annular nozzle',custom:'Custom area'}}[lang298()][type]||type;
+ let dim='';
+ if(type==='round')dim=`${c} × Ø ${fmt298(Number(k.diameter)||0,2)} mm`;
+ else if(type==='flat'||type==='slot')dim=`${c} × ${fmt298(Number(k.width)||Number(k.slotWidth)||0,2)} × ${fmt298(Number(k.height)||Number(k.slotHeight)||0,2)} mm`;
+ else if(type==='annular')dim=`${c} × Ø ${fmt298(Number(k.outerDiameter)||0,2)} / ${fmt298(Number(k.innerDiameter)||0,2)} mm`;
+ else dim=`${fmt298(getNozzleArea(),2)} mm²`;
+ return `${name} · ${dim}`;
+}
+function geometrySuggestion298(areaTotal){
+ const k=state.setup.kss,c=Math.max(1,Number(k.count)||1),per=Math.max(areaTotal,0)/c,type=k.nozzleType||'custom';
+ if(type==='round'){
+   const dia=Math.sqrt(4*per/Math.PI);
+   return `${c} × Ø ${fmt298(dia,2)} mm`;
+ }
+ if(type==='flat'||type==='slot'){
+   const h=Math.max(Number(k.height)||Number(k.slotHeight)||2,.01),w=per/h;
+   return `${c} × ${fmt298(w,2)} × ${fmt298(h,2)} mm`;
+ }
+ return `${fmt298(areaTotal,2)} mm² ${lang298()==='en'?'total':'gesamt'}`;
+}
+window.oilCalc=function(){
+ ensure298();
+ const k=state.setup.kss,o=state.oil,A=Math.max(getNozzleArea(),.000001),rho=Math.max(Number(k.densityUse)||0,.000001),rhoSI=rho*1000,cd=Math.max(Number(k.cd)||.92,.01),t=Math.max(Number(o.time)||0,.01),targetSpeed=Math.max(Number(state.setup.process.wheelSpeed)||0,.000001),tolPct=o.tolerancePct,tol=tolPct/100,lineLoss=Math.max(Number(k.lineLoss)||0,0);
+ let machinePressure, nozzlePressure, actualVolume, actualWeight, actualFlow, actualSpeed;
+ if(o.controlMode==='pressure'){
+   machinePressure=Math.max(Number(o.referencePressure)||0,0);
+   nozzlePressure=Math.max(machinePressure-lineLoss,0);
+   actualSpeed=nozzlePressure>0?cd*Math.sqrt(2*nozzlePressure*1e5/rhoSI):0;
+   actualFlow=.06*A*actualSpeed;
+   actualVolume=actualFlow*t/60;
+   actualWeight=actualVolume*rho;
+ }else{
+   actualVolume=o.controlMode==='weight'?Math.max(Number(o.weight)||0,0)/rho:Math.max(Number(o.volume)||0,0);
+   actualWeight=actualVolume*rho;
+   actualFlow=actualVolume*60/t;
+   actualSpeed=actualFlow/(.06*A);
+   nozzlePressure=rhoSI/2*Math.pow(actualSpeed/cd,2)/1e5;
+   machinePressure=nozzlePressure+lineLoss;
+ }
+ const targetFlow=.06*A*targetSpeed,targetVolume=targetFlow*t/60,targetWeight=targetVolume*rho,targetNozzlePressure=rhoSI/2*Math.pow(targetSpeed/cd,2)/1e5,targetMachinePressure=targetNozzlePressure+lineLoss;
+ const lowRatio=1-tol,highRatio=1+tol,ratio=actualSpeed/targetSpeed,lowSpeed=targetSpeed*lowRatio,highSpeed=targetSpeed*highRatio,lowFlow=.06*A*lowSpeed,highFlow=.06*A*highSpeed,lowVolume=lowFlow*t/60,highVolume=highFlow*t/60,lowWeight=lowVolume*rho,highWeight=highVolume*rho;
+ const minMachinePressure=Math.max(Number(o.minPressure)||0,0),minNozzlePressure=Math.max(minMachinePressure-lineLoss,0),minSpeed=minNozzlePressure>0?cd*Math.sqrt(2*minNozzlePressure*1e5/rhoSI):0,minFlow=.06*A*minSpeed,minVolume=minFlow*t/60,minWeight=minVolume*rho,minRatio=minSpeed/targetSpeed;
+ const pressureLimited=minMachinePressure>0&&targetMachinePressure<minMachinePressure-1e-9,tooFastAtMin=pressureLimited&&minRatio>highRatio,tooMuchAtMin=pressureLimited&&minVolume>highVolume,boundaryActive=tooFastAtMin||tooMuchAtMin;
+ const targetAreaAtMin=minSpeed>0?targetFlow/(.06*minSpeed):A,areaReductionPct=A>0?Math.max(0,(1-targetAreaAtMin/A)*100):0;
+ const storedPressure=Math.max(Number(o.referencePressure)||0,0),storedNozzle=Math.max(storedPressure-lineLoss,0),theorySpeed=storedNozzle>0?cd*Math.sqrt(2*storedNozzle*1e5/rhoSI):0,theoryFlow=.06*A*theorySpeed,theoryVolume=theoryFlow*t/60;
+ const pressureDelta=targetMachinePressure-machinePressure,targetPressureLow=(rhoSI/2*Math.pow(lowSpeed/cd,2)/1e5)+lineLoss,targetPressureHigh=(rhoSI/2*Math.pow(highSpeed/cd,2)/1e5)+lineLoss;
+ const atSeconds=sec=>({sec,targetVolume:targetFlow*sec/60,targetWeight:targetFlow*sec/60*rho,lowVolume:lowFlow*sec/60,highVolume:highFlow*sec/60,theoryVolume:theoryFlow*sec/60,theoryWeight:theoryFlow*sec/60*rho});
+ o.pressure=machinePressure;
+ return{
+  A,rho,rhoSI,cd,t,mode:o.controlMode,controlMode:o.controlMode,p:machinePressure,pressure:machinePressure,machinePressure,nozzlePressure,lineLoss,tolPct,autoFill:o.controlMode==='pressure',manualMeasurement:o.controlMode!=='pressure',
+  theorySpeed,theoryFlow,theoryVolume,theoryWeight:theoryVolume*rho,actualFlow,actualSpeed,actualVolume,actualWeight,ratio,lowRatio,highRatio,targetSpeed,targetFlow,targetVolume,targetWeight,
+  targetPressureTheory:targetNozzlePressure,targetNozzlePressure,targetPressure:targetMachinePressure,targetMachinePressure,recommendedPressure:targetMachinePressure,targetPump:targetMachinePressure,targetPressureLow,targetPressureHigh,
+  lowSpeed,highSpeed,lowFlow,highFlow,lowVolume,highVolume,lowWeight,highWeight,pressureDelta,deviationTheory:theoryVolume>0?(actualVolume/theoryVolume-1)*100:0,deviationTarget:targetFlow>0?(actualFlow/targetFlow-1)*100:0,
+  minMachinePressure,minNozzlePressure,minSpeed,minFlow,minVolume,minWeight,minRatio,pressureLimited,tooFastAtMin,tooMuchAtMin,boundaryActive,targetAreaAtMin,areaReductionPct,
+  atSeconds
+ };
+};
+function field298(id,label,value,unit,help='',placeholder=''){
+ return `<div class="oil298-field"><label for="${id}">${label}</label><div class="oil298-field-wrap"><input id="${id}" inputmode="decimal" value="${value}" placeholder="${placeholder}"><span class="oil298-unit">${unit}</span></div>${help?`<small>${help}</small>`:''}</div>`;
+}
+function modes298(r){
+ const modes=[
+  ['volume','L',t298('volumeMode')],
+  ['weight','kg',t298('weightMode')],
+  ['pressure','bar',t298('pressureMode')]
+ ];
+ return `<div class="oil298-modes">${modes.map(x=>`<button class="oil298-mode ${r.controlMode===x[0]?'active':''}" data-oil298-mode="${x[0]}"><i>${x[1]}</i><div><strong>${x[2]}</strong></div></button>`).join('')}</div>`;
+}
+function suggestion298(r){
+ const impossible=r.minMachinePressure>0&&r.targetMachinePressure<r.minMachinePressure;
+ const label=r.controlMode==='volume'?t298('useVolume'):r.controlMode==='weight'?t298('useWeight'):impossible?t298('belowMinimum'):t298('usePressure');
+ return `<div class="oil298-suggestion-main"><span>${t298('suggestion')} ${fmt298(r.t,0)} s</span><strong>${fmt298(r.targetVolume)} L</strong><small>${t298('targetRange')}: ${fmt298(r.lowVolume)}–${fmt298(r.highVolume)} L</small></div>
+ <div class="oil298-suggestion-mini"><span>${t298('targetWeight')}</span><strong>${fmt298(r.targetWeight)} kg</strong></div>
+ <div class="oil298-suggestion-mini"><span>${t298('targetPressure')}</span><strong>${fmt298(r.targetMachinePressure)} bar</strong></div>
+ <button id="oil298UseTarget" class="oil298-use-target" ${r.controlMode==='pressure'&&impossible?'disabled':''}>${label}</button>`;
+}
+function inputPanel298(r){
+ const o=state.oil,en=lang298()==='en';
+ let main;
+ if(r.controlMode==='weight')main=field298('oil298Main',t298('weightInput'),raw298(o.weight,4),'kg');
+ else if(r.controlMode==='pressure')main=field298('oil298Main',t298('pressureInput'),raw298(o.referencePressure,4),'bar');
+ else main=field298('oil298Main',t298('volumeInput'),raw298(o.volume,4),'L');
+ const toleranceLabel=en?'Permissible deviation':'Zulässige Abweichung';
+ const detailLabel=en?'Show nozzle details':'Düsendetails anzeigen';
+ return `<div class="section oil298-control"><div class="oil298-head"><div><span>${t298('kicker')}</span><h3>${t298('title')}</h3></div><button id="oil298Help" class="oil298-help">${t298('help')}</button></div>
+ ${modes298(r)}<div id="oil298Suggestion" class="oil298-suggestion">${suggestion298(r)}</div>
+ <div class="oil298-inputs">${main}${field298('oil298Time',t298('time'),raw298(o.time,3),'s')}${field298('oil298Tolerance',toleranceLabel,raw298(o.tolerancePct,2),'%')}${field298('oil298MinPressure',t298('minimum'),o.minPressure>0?raw298(o.minPressure,4):'','bar','', '–')}</div>
+ <details class="oil298-advanced"><summary>${detailLabel}</summary><div class="oil298-advanced-body"><div class="oil298-setup"><b>${t298('setup')}: ${nozzleSummary298()}</b><br>${t298('totalArea')} ${fmt298(r.A)} mm² · ${t298('density')} ${fmt298(r.rho,3)} kg/L · C<sub>d</sub> ${fmt298(r.cd)} · ${t298('wheel')} ${fmt298(r.targetSpeed)} m/s · ${t298('lineLoss')} ${fmt298(r.lineLoss)} bar</div></div></details>
+ </div>`;
+}
+function status298(r){
+ if(r.boundaryActive)return{level:'warn',title:t298('limited'),text:t298('limitedText')};
+ if(r.ratio<r.lowRatio)return{level:'warn',title:t298('tooLow'),text:t298('lowText')};
+ if(r.ratio>r.highRatio)return{level:'bad',title:t298('tooHigh'),text:t298('highText')};
+ return{level:'good',title:t298('fits'),text:t298('fitsText')};
+}
+function kpis298(r){
+ const s=status298(r),cls=s.level;
+ const cards=[
+  ['primary',t298('actualLitres'),`${fmt298(r.actualVolume)} L`,`${fmt298(r.t,0)} s`],
+  ['',t298('actualWeight'),`${fmt298(r.actualWeight)} kg`,`${t298('density')} ${fmt298(r.rho,3)} kg/L`],
+  [cls,t298('flow'),`${fmt298(r.actualFlow)} L/min`,`${t298('target')}: ${fmt298(r.targetFlow)} L/min`],
+  [cls,t298('speed'),`${fmt298(r.actualSpeed)} m/s`,`${t298('ratio')}: ${fmt298(r.ratio)} : 1`],
+  ['',t298('machinePressure'),`${fmt298(r.machinePressure)} bar`,`${t298('lineLoss')} ${fmt298(r.lineLoss)} bar`],
+  ['',t298('nozzlePressure'),`${fmt298(r.nozzlePressure)} bar`,`${t298('target')}: ${fmt298(r.targetNozzlePressure)} bar`]
+ ];
+ return `<div class="oil298-kpis">${cards.map(x=>`<div class="oil298-kpi ${x[0]}"><span>${x[1]}</span><strong>${x[2]}</strong><small>${x[3]}</small></div>`).join('')}</div>`;
+}
+function statusCard298(r){
+ const s=status298(r);
+ return `<div class="section oil298-status ${s.level}"><div><h3>${s.title}</h3><p>${s.text}</p></div><div class="oil298-status-value"><div><span>${t298('nextLitres')} / ${fmt298(r.t,0)} s</span><strong>${fmt298(r.targetVolume)} L</strong></div><div><span>${t298('nextPressure')}</span><strong>${fmt298(r.targetMachinePressure)} bar</strong></div><div><span>${t298('ratio')}</span><strong>${fmt298(r.ratio)} : 1</strong></div><div><span>${t298('targetRange')}</span><strong>${fmt298(r.lowVolume)}–${fmt298(r.highVolume)} L</strong></div></div></div>`;
+}
+function boundary298(r){
+ if(!r.boundaryActive)return'';
+ return `<div class="section oil298-boundary"><div class="oil298-boundary-head"><div><h3>${t298('boundaryTitle')}</h3><p>${t298('boundaryIntro')}</p></div><span class="oil298-boundary-pill">${t298('minimum')}: ${fmt298(r.minMachinePressure)} bar</span></div>
+ <div class="oil298-boundary-grid">
+  <div class="oil298-boundary-card"><span>${t298('minResult')}</span><strong>${fmt298(r.minVolume)} L / ${fmt298(r.t,0)} s</strong><p>${fmt298(r.minWeight)} kg · ${fmt298(r.minSpeed)} m/s · ${fmt298(r.minRatio)} : 1</p></div>
+  <div class="oil298-boundary-card recommended"><span>${t298('primarySolution')}</span><strong>${t298('primaryValue')}</strong><p>${t298('primaryText')} <b>${fmt298(r.targetMachinePressure)} bar</b> ${lang298()==='en'?'at the machine and':'an der Maschine und'} <b>${fmt298(r.targetNozzlePressure)} bar</b> ${lang298()==='en'?'at the nozzle.':'an der Düse.'}</p></div>
+  <div class="oil298-boundary-card"><span>${t298('flowOnly')}</span><strong>${t298('areaSuggestion')}: ${fmt298(r.targetAreaAtMin)} mm²</strong><p>${t298('geometry')}: <b>${geometrySuggestion298(r.targetAreaAtMin)}</b>. ${t298('speedStill')}: <b>${fmt298(r.minSpeed)} m/s</b>. ${t298('flowOnlyText')}</p></div>
+ </div></div>`;
+}
+function targetBand298(r){
+ return `<div class="section oil298-targetband"><h3>${t298('targetOverview')}</h3><div class="oil298-target-grid"><div><span>${t298('low')}</span><strong>${fmt298(r.lowVolume)} L</strong></div><div><span>${t298('target')}</span><strong>${fmt298(r.targetVolume)} L</strong></div><div><span>${t298('high')}</span><strong>${fmt298(r.highVolume)} L</strong></div><div><span>${t298('machineTarget')}</span><strong>${fmt298(r.targetMachinePressure)} bar</strong></div></div></div>`;
+}
+function visualText298(){
+ const en=lang298()==='en';
+ return en?{
+  current:'CURRENT situation',currentSub:'Calculated from the selected input method.',target:'TARGET situation',targetSub:'MWF jet velocity matches the grinding-wheel speed.',
+  inTarget:'in target',tooLow:'too low',tooHigh:'too high',mwf:'MWF',wheel:'Grinding wheel',machine:'Machine',nozzle:'Nozzle',flow:'Flow rate',
+  volume:'Volume',velocity:'MWF velocity',pressure:'Machine pressure',targetVolume:'Target volume',targetFlow:'Target flow rate',targetPressure:'Target machine pressure'
+ }:{
+  current:'IST-Situation',currentSub:'Aus der gewählten Eingabeart berechnet.',target:'SOLL-Situation',targetSub:'Die KSS-Strahlgeschwindigkeit entspricht der Schleifscheibengeschwindigkeit.',
+  inTarget:'im Ziel',tooLow:'zu wenig',tooHigh:'zu viel',mwf:'KSS',wheel:'Schleifscheibe',machine:'Maschine',nozzle:'Düse',flow:'Volumenstrom',
+  volume:'Menge',velocity:'KSS-Geschwindigkeit',pressure:'Maschinendruck',targetVolume:'Sollmenge',targetFlow:'Soll-Volumenstrom',targetPressure:'Soll-Maschinendruck'
+ };
+}
+function sceneSvg298(r,target=false){
+ const tx=visualText298(),s=status298(r),speed=target?r.targetSpeed:r.actualSpeed,flow=target?r.targetFlow:r.actualFlow,machineP=target?r.targetMachinePressure:r.machinePressure,nozzleP=target?r.targetNozzlePressure:r.nozzlePressure,ratio=target?1:r.ratio;
+ const level=target?'good':s.level,jetColor=level==='good'?'#2e9b61':level==='warn'?'#d69a17':'#df493c',jetHeight=Math.max(10,Math.min(36,14*(flow/Math.max(r.targetFlow,.001)))),id=target?'T298':'I298';
+ return `<svg class="oil298-scene" viewBox="0 0 640 260" role="img" aria-label="${target?tx.target:tx.current}"><defs><linearGradient id="jet${id}" x1="0" x2="1"><stop offset="0" stop-color="#72c5e8"/><stop offset=".68" stop-color="#348fba"/><stop offset="1" stop-color="${jetColor}"/></linearGradient><marker id="arrow${id}" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#17354d"/></marker></defs><text x="30" y="42" font-size="14" font-weight="900" fill="#17354d">${nozzleSummary298()}</text>${oilNozzleFragment292()}<path d="M194 ${126-jetHeight/2} L434 ${126-jetHeight/2+3} L434 ${126+jetHeight/2-3} L194 ${126+jetHeight/2} Z" fill="url(#jet${id})" opacity=".94"/><line x1="214" y1="126" x2="418" y2="126" stroke="#176e9e" stroke-width="3.5" marker-end="url(#arrow${id})"/><circle cx="528" cy="126" r="82" fill="#eef3f6" stroke="#708b9c" stroke-width="11"/><circle cx="528" cy="126" r="24" fill="#fff" stroke="#9cafba" stroke-width="4"/><path d="M487 56 A82 82 0 0 1 600 88" fill="none" stroke="#17354d" stroke-width="4.5" marker-end="url(#arrow${id})"/><text x="274" y="88" text-anchor="middle" font-size="14" font-weight="900" fill="${jetColor}">${tx.mwf} ${fmt298(speed)} m/s</text><text x="528" y="132" text-anchor="middle" font-size="20" font-weight="950" fill="#17354d">${fmt298(ratio)} : 1</text><text x="528" y="234" text-anchor="middle" font-size="14" font-weight="900" fill="#17354d">${tx.wheel} ${fmt298(r.targetSpeed)} m/s</text><text x="31" y="201" font-size="12" fill="#587184">${tx.machine} ${fmt298(machineP)} bar · ${tx.nozzle} ${fmt298(nozzleP)} bar</text><text x="31" y="221" font-size="12.5" fill="#587184">${tx.flow} ${fmt298(flow)} L/min</text></svg>`;
+}
+function visualCompare298(r){
+ const tx=visualText298(),s=status298(r),currentPill=r.ratio<r.lowRatio?tx.tooLow:r.ratio>r.highRatio?tx.tooHigh:tx.inTarget;
+ return `<div class="oil298-visual-grid"><div class="section oil298-visual-card current"><div class="oil298-visual-head"><h3>${tx.current}</h3><span class="oil298-visual-pill ${s.level}">${currentPill}</span></div>${sceneSvg298(r,false)}<div class="oil298-visual-summary"><div class="accent"><span>${tx.volume} / ${fmt298(r.t,0)} s</span><strong>${fmt298(r.actualVolume)} L</strong></div><div><span>${tx.pressure}</span><strong>${fmt298(r.machinePressure)} bar</strong></div></div></div><div class="section oil298-visual-card target"><div class="oil298-visual-head"><h3>${tx.target}</h3><span class="oil298-visual-pill target">±${fmt298(r.tolPct,0)} %</span></div>${sceneSvg298(r,true)}<div class="oil298-visual-summary"><div class="accent"><span>${tx.targetVolume} / ${fmt298(r.t,0)} s</span><strong>${fmt298(r.targetVolume)} L</strong></div><div><span>${tx.targetPressure}</span><strong>${fmt298(r.targetMachinePressure)} bar</strong></div></div></div></div>`;
+}
+function toleranceBar300(r){
+ const en=lang298()==='en',tol=r.tolPct/100,span=Math.min(2,Math.max(.5,Math.abs(r.ratio-1)*1.22,tol*1.8)),min=Math.max(0,1-span),max=1+span,pos=v=>Math.max(0,Math.min(100,(v-min)/(max-min)*100)),actual=pos(r.ratio),low=pos(r.lowRatio),high=pos(r.highRatio),cls=r.ratio<r.lowRatio?'warn':r.ratio>r.highRatio?'bad':'good';
+ const heading=en?`Permissible deviation ±${fmt298(r.tolPct,0)} %`:`Zulässige Abweichung ±${fmt298(r.tolPct,0)} %`;
+ const current=en?'Current ratio':'Aktuelles Verhältnis',slow=en?'too slow':'zu langsam',target=en?'permissible':'zulässig',fast=en?'too fast':'zu schnell',actualLabel=en?'ACTUAL':'IST';
+ return `<div class="section oil300-tolerance"><div class="oil300-tolerance-head"><h3>${heading}</h3><div class="oil300-current"><span>${current}</span><strong>${fmt298(r.ratio)} : 1</strong></div></div><div class="oil300-scale"><div class="oil300-track"><i class="oil300-band" style="left:${low}%;width:${high-low}%"></i></div><i class="oil300-center" style="left:50%"></i><div class="oil300-pointer ${cls}" style="left:${actual}%"><b>${actualLabel} ${fmt298(r.ratio)}</b></div><span class="oil300-label" style="left:${low}%">${fmt298(r.lowRatio)}</span><span class="oil300-label" style="left:50%;font-weight:950;color:#17354d">1.00</span><span class="oil300-label" style="left:${high}%">${fmt298(r.highRatio)}</span><span class="oil300-zone left">${slow}</span><span class="oil300-zone center">${target}</span><span class="oil300-zone right">${fast}</span></div></div>`;
+}
+function simpleStatus300(r){
+ const s=status298(r),en=lang298()==='en';
+ const range=en?'Permissible volume':'Zulässige Menge';
+ return `<div class="section oil300-status ${s.level}"><div><h3>${s.title}</h3><p>${s.text}</p></div><div class="oil300-status-range"><span>${range} / ${fmt298(r.t,0)} s</span><strong>${fmt298(r.lowVolume)}–${fmt298(r.highVolume)} L</strong></div></div>`;
+}
+function boundary300(r){
+ if(!r.boundaryActive)return'';
+ const en=lang298()==='en';
+ const setText=en?'Required setting':'Benötigte Einstellung',machine=en?'machine':'Maschine',nozzle=en?'nozzle':'Düse';
+ const alt=en?`Only when reducing litres is sufficient: reduce the free nozzle area to ${fmt298(r.targetAreaAtMin)} mm². Jet velocity remains ${fmt298(r.minSpeed)} m/s.`:`Nur wenn weniger Liter genügen: freie Düsenfläche auf ${fmt298(r.targetAreaAtMin)} mm² reduzieren. Die Strahlgeschwindigkeit bleibt ${fmt298(r.minSpeed)} m/s.`;
+ return `<div class="section oil300-boundary"><h3>${t298('boundaryTitle')}</h3><div class="oil300-boundary-main"><div><span>${t298('primarySolution')}</span><strong>${t298('primaryValue')}</strong></div><b>${fmt298(r.targetMachinePressure)} bar ${machine}<br>${fmt298(r.targetNozzlePressure)} bar ${nozzle}</b></div><div class="oil300-boundary-note"><b>${setText}:</b> ${t298('primaryText')}<br>${alt}</div></div>`;
+}
+function results298(r){return `${visualCompare298(r)}${toleranceBar300(r)}${simpleStatus300(r)}${boundary300(r)}`}
+window.renderOil=function(){ensure298();const r=oilCalc();return `<div id="bilingual-runtime" class="oil298">${inputPanel298(r)}<div id="oil298Results" class="oil298">${results298(r)}</div></div>`};
+function setSelectedTarget298(){
+ const r=oilCalc(),o=state.oil;
+ if(r.controlMode==='volume')o.volume=r.targetVolume;
+ else if(r.controlMode==='weight')o.weight=r.targetWeight;
+ else{
+   if(o.minPressure>0&&r.targetMachinePressure<o.minPressure)return;
+   o.referencePressure=r.targetMachinePressure;o.pressure=o.referencePressure;
+ }
+ saveState();renderModule();
+}
+function bindDynamic298(){
+ const use=$('oil298UseTarget');if(use)use.onclick=setSelectedTarget298;
+ const help=$('oil298Help');if(help)help.onclick=()=>openOilHelp('basic');
+}
+window.updateOil298=function(){
+ const r=oilCalc(),s=$('oil298Suggestion'),res=$('oil298Results');
+ if(s)s.innerHTML=suggestion298(r);
+ if(res)res.innerHTML=results298(r);
+ bindDynamic298();saveState();
+};
+const previousBind298=window.bindModule;
+window.bindModule=function(){
+ if(currentModule!=='oil')return previousBind298();
+ document.querySelectorAll('[data-oil298-mode]').forEach(b=>b.onclick=()=>{
+   const r=oilCalc(),mode=b.dataset.oil298Mode;
+   state.oil.volume=r.actualVolume;state.oil.weight=r.actualWeight;state.oil.referencePressure=r.machinePressure;state.oil.pressure=r.machinePressure;state.oil.controlMode=mode;state.oil.mode=mode;
+   saveState();renderModule();
+ });
+ const main=$('oil298Main');if(main)main.oninput=()=>{const v=n298(main.value);if(v!==null){if(state.oil.controlMode==='volume')state.oil.volume=Math.max(v,0);else if(state.oil.controlMode==='weight')state.oil.weight=Math.max(v,0);else{state.oil.referencePressure=Math.max(v,0);state.oil.pressure=state.oil.referencePressure}updateOil298()}};
+ const time=$('oil298Time');if(time)time.oninput=()=>{const v=n298(time.value);if(v!==null){state.oil.time=Math.max(v,.01);updateOil298()}};
+ const minP=$('oil298MinPressure');if(minP)minP.oninput=()=>{const v=n298(minP.value);state.oil.minPressure=v===null?0:Math.max(v,0);updateOil298()};
+ const tol=$('oil298Tolerance');if(tol)tol.oninput=()=>{const v=n298(tol.value);if(v!==null){state.oil.tolerancePct=Math.max(1,Math.min(50,v));updateOil298()}};
+ bindDynamic298();
+};
+window.oilHelpContent=function(tab,r){
+ const q=oilCalc();
+ if(tab==='time'){
+   const times=[10,15,30,45,60,q.t].filter((v,i,a)=>a.indexOf(v)===i).sort((a,b)=>a-b);
+   return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>${t298('targetOverview')}</h4><table class="oil-help-table291"><thead><tr><th>${t298('time')}</th><th>${t298('targetLitres')}</th><th>${t298('targetWeight')}</th><th>${t298('targetRange')}</th></tr></thead><tbody>${times.map(sec=>{const x=q.atSeconds(sec);return `<tr><td>${fmt298(sec,0)} s</td><td>${fmt298(x.targetVolume)} L</td><td>${fmt298(x.targetWeight)} kg</td><td>${fmt298(x.lowVolume)}–${fmt298(x.highVolume)} L</td></tr>`}).join('')}</tbody></table></div></div>`;
+ }
+ if(tab==='nozzle')return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>${t298('helpMinimumTitle')}</h4><div class="oil-help-warning291">${t298('helpMinimumText')}</div></div></div>`;
+ return `<div class="oil-help-content291"><div class="oil-help-section291"><h4>${t298('helpBasicTitle')}</h4><div class="oil-help-two"><div class="oil-help-note291"><strong>${t298('volumeMode')}</strong><br>${t298('helpVolume')}</div><div class="oil-help-note291"><strong>${t298('weightMode')}</strong><br>${t298('helpWeight')}</div><div class="oil-help-note291"><strong>${t298('pressureMode')}</strong><br>${t298('helpPressure')}</div><div class="oil-help-note291"><strong>${t298('helpMinimumTitle')}</strong><br>${t298('helpMinimumText')}</div></div></div><div class="oil-help-section291"><h4>${t298('helpFormulaTitle')}</h4><div class="oil-help-note291">${t298('helpFormulaText')}</div></div></div>`;
+};
+const previousQA298=window.FINAL_QA;
+window.FINAL_QA={version:'3.00',run:()=>{
+ const saveOil={...state.oil},saveKss={...state.setup.kss},saveSpeed=state.setup.process.wheelSpeed;
+ state.oil={...state.oil,controlMode:'volume',mode:'volume',minPressure:0};
+ let base={tests:[]};
+ try{base=previousQA298?.run?previousQA298.run():{tests:[]}}catch(e){base={tests:[['Previous QA execution',false]],error:String(e)}}
+ state.setup.kss={...state.setup.kss,nozzleType:'flat',count:2,width:8,height:2,densityUse:.8,cd:.92,lineLoss:0};
+ state.setup.process.wheelSpeed=21;
+ state.oil={...state.oil,controlMode:'pressure',mode:'pressure',referencePressure:5,time:45,tolerancePct:10,minPressure:0,volume:0,weight:0};
+ const p=oilCalc();
+ state.oil={...state.oil,controlMode:'volume',mode:'volume',volume:p.actualVolume};
+ const v=oilCalc();
+ state.oil={...state.oil,controlMode:'weight',mode:'weight',weight:p.actualWeight};
+ const w=oilCalc();
+ state.oil={...state.oil,controlMode:'pressure',mode:'pressure',referencePressure:3.5,minPressure:3.5};
+ const m=oilCalc();
+ const near=(a,b,t=1e-5)=>Math.abs(a-b)<=t;
+ const extra=[
+  ['KSS pressure to litres',near(p.actualVolume,46.838754,1e-5)],
+  ['KSS litres to pressure',near(v.machinePressure,5,1e-5)],
+  ['KSS weight to pressure',near(w.machinePressure,5,1e-5)],
+  ['KSS target litres',near(p.targetVolume,30.24,1e-8)],
+  ['KSS target machine pressure',near(p.targetMachinePressure,2.08412,1e-4)],
+  ['KSS minimum-pressure fallback',m.boundaryActive&&m.targetAreaAtMin<m.A]
+ ];
+ state.oil=saveOil;state.setup.kss=saveKss;state.setup.process.wheelSpeed=saveSpeed;
+ const tests=[...(base.tests||[]),...extra];
+ return{...base,version:'3.00',tests,total:tests.length,passed:tests.filter(x=>x[1]).length,ok:tests.every(x=>x[1])};
+}};
+try{saveState();renderHome();if(currentModule==='oil')renderModule()}catch(e){console.error('2.99 KSS graphic restore',e)}
+})();
+</script>
+
+
+<!-- PWA-Ergänzung v1.0.0: Service-Worker-Registrierung -->
+<script>
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(function (error) {
+      console.error("Service Worker konnte nicht registriert werden:", error);
+    });
+  });
+}
+</script>
 </body></html>
